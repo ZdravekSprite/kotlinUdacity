@@ -5,5 +5,7 @@
 -- 00 Hello Android
 
 activity_main.xml
--android:text="Hello World!"
-+android:text="Hello Android!"
+12-android:text="Hello World!"
+12+android:text="Hello Android!"
+
+-- 01 LinearLayout
