@@ -58,3 +58,13 @@ activity_main.xml
 
 
 -- 04 Button
+
+activity_main.xml
+
+23-        android:text="Roll" />
+23+        android:text="@string/roll" />
+
+
+res/values/strings.xml
+
+3+    <string name="roll">Roll</string>
