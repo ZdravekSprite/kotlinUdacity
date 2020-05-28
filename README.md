@@ -47,4 +47,9 @@ activity_main.xml
 
 12+        android:layout_gravity="center_horizontal"
 
+
 -- 03 LinearLayout
+
+activity_main.xml
+
+7+    android:orientation="vertical"
