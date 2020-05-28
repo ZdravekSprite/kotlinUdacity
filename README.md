@@ -44,3 +44,5 @@ activity_main.xml
 19+        android:text="Roll" />
 
 12+        android:textSize="30sp"
+
+12+        android:layout_gravity="center_horizontal"
