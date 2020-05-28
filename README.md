@@ -55,3 +55,6 @@ activity_main.xml
 7+    android:orientation="vertical"
 
 7+    android:layout_gravity="center_vertical"
+
+
+-- 04 Button
