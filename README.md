@@ -32,4 +32,13 @@ activity_main.xml
 7-    android:layout_height="match_parent"
 6+    android:layout_height="wrap_content"
 
+
 -- 02 Add Button
+
+activity_main.xml
+
+15+    <Button
+16+        android:layout_width="wrap_content"
+17+        android:layout_height="wrap_content"
+18+        android:layout_gravity="center_horizontal"
+19+        android:text="Roll" />
