@@ -46,3 +46,5 @@ activity_main.xml
 12+        android:textSize="30sp"
 
 12+        android:layout_gravity="center_horizontal"
+
+-- 03 LinearLayout
