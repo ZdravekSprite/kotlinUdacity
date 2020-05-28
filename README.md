@@ -73,3 +73,7 @@ res/values/strings.xml
 activity_main.xml
 
 20+        android:id="@+id/roll_button"
+
+
+-- 05 findViewById or View Binding
+
