@@ -68,3 +68,8 @@ activity_main.xml
 res/values/strings.xml
 
 3+    <string name="roll">Roll</string>
+
+
+activity_main.xml
+
+20+        android:id="@+id/roll_button"
