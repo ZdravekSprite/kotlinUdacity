@@ -32,3 +32,4 @@ activity_main.xml
 7-    android:layout_height="match_parent"
 6+    android:layout_height="wrap_content"
 
+-- 02 Add Button
