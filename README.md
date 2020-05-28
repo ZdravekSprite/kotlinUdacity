@@ -27,3 +27,8 @@ activity_main.xml
 17-    app:layout_constraintTop_toTopOf="parent" />
 13+    android:text=""
 14+    tools:text="1" />
+
+4-    xmlns:app="http://schemas.android.com/apk/res-auto"
+7-    android:layout_height="match_parent"
+6+    android:layout_height="wrap_content"
+
