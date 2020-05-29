@@ -90,3 +90,7 @@ MainActivity.kt
 5+    import android.widget.Button
 
 13+    rollButton.text = "Let's Roll"
+
+// Let's Roll shown on start
+
+13-    rollButton.text = "Let's Roll"
