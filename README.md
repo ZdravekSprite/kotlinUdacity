@@ -81,4 +81,8 @@ TODO return to do View Binding
 
 -- 05a findViewById
 
+10+
+11+    val rollButton: Button = findViewById(R.id.roll_button)
+12+
 
+5+    import android.widget.Button
