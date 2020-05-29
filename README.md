@@ -123,3 +123,6 @@ MainActivity.kt
 19+        val randomInt = Random().nextInt(6) + 1
 
 6+import java.util.*
+
+21+
+22+        val resultText: TextView = findViewById(R.id.result_text)
