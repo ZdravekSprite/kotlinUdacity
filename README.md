@@ -98,3 +98,7 @@ MainActivity.kt
 
 -- 06a setOnClickListener
 
+MainActivity.kt
+
+13+        rollButton.setOnClickListener {
+14+        }
