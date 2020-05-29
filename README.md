@@ -126,3 +126,5 @@ MainActivity.kt
 
 21+
 22+        val resultText: TextView = findViewById(R.id.result_text)
+
+6+import android.widget.TextView
