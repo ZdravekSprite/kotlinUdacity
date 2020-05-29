@@ -130,3 +130,5 @@ MainActivity.kt
 6+import android.widget.TextView
 
 24+        resultText.text = randomInt.toString()
+
+-- 08a Text to Images
