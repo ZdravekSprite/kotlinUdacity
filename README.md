@@ -91,15 +91,12 @@ MainActivity.kt
 
 13+    rollButton.text = "Let's Roll"
 
-// Let's Roll shown on start
-
-13-    rollButton.text = "Let's Roll"
-
 
 -- 06a setOnClickListener
 
 MainActivity.kt
 
+13-        rollButton.text = "Let's Roll"
 13+        rollButton.setOnClickListener {
 14+        }
 
@@ -112,3 +109,10 @@ MainActivity.kt
 activity_main.xml
 
 12+        android:id="@+id/result_text"
+
+
+MainActivity.kt
+
+6-import android.widget.Toast
+15-            Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
+15+            rollDice()
