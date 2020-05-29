@@ -85,7 +85,6 @@ MainActivity.kt
 
 10+
 11+    val rollButton: Button = findViewById(R.id.roll_button)
-12+
 
 5+    import android.widget.Button
 
@@ -116,3 +115,7 @@ MainActivity.kt
 6-import android.widget.Toast
 15-            Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
 15+            rollDice()
+
+17+
+18+    private fun rollDice() {
+19+    }
