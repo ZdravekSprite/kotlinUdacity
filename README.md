@@ -77,3 +77,4 @@ activity_main.xml
 
 -- 05 findViewById or View Binding
 
+TODO return to do View Binding
