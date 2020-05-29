@@ -108,3 +108,7 @@ MainActivity.kt
 6+import android.widget.Toast
 
 -- 07a Change the Text
+
+activity_main.xml
+
+12+        android:id="@+id/result_text"
