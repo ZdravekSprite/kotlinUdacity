@@ -132,3 +132,5 @@ MainActivity.kt
 24+        resultText.text = randomInt.toString()
 
 -- 08a Text to Images
+
+adding images in app/src/main/res/drawable
