@@ -102,3 +102,6 @@ MainActivity.kt
 
 13+        rollButton.setOnClickListener {
 14+        }
+
+14+            Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
+
