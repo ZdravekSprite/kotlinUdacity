@@ -119,3 +119,5 @@ MainActivity.kt
 17+
 18+    private fun rollDice() {
 19+    }
+
+19+        val randomInt = Random().nextInt(6) + 1
