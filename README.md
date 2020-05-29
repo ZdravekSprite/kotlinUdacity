@@ -94,3 +94,7 @@ MainActivity.kt
 // Let's Roll shown on start
 
 13-    rollButton.text = "Let's Roll"
+
+
+-- 06a setOnClickListener
+
