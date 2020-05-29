@@ -128,3 +128,5 @@ MainActivity.kt
 22+        val resultText: TextView = findViewById(R.id.result_text)
 
 6+import android.widget.TextView
+
+24+        resultText.text = randomInt.toString()
