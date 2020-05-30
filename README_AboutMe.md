@@ -20,8 +20,21 @@ activity_main.xml
 
 -- 02 Add a TextView, ImageView, and Styling
 
+activity_main.xml
+
 7+    <TextView
 8+        android:id="@+id/textView"
 9+        android:layout_width="match_parent"
 10+        android:layout_height="wrap_content"
 11+        android:text="Zdravko Šplajt" />
+
+
+string.xml
+
+3+    <string name="name">Zdravko Šplajt</string>
+
+
+activity_main.xml
+
+11-        android:text="Zdravko Šplajt" />
+11+        android:text="@string/name" />
