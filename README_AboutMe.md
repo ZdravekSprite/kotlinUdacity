@@ -124,3 +124,7 @@ activity_main.xml
 31+            android:layout_width="match_parent"
 32+            android:layout_height="wrap_content"
 33+            android:text="@string/bio" />
+
+33-            android:text="@string/bio" />
+33+            android:text="@string/bio"
+34+            style="@style/NameStyle" />

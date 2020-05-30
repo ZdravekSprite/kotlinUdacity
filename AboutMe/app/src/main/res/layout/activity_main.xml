@@ -30,6 +30,7 @@
             android:id="@+id/bio_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/bio" />
+            android:text="@string/bio"
+            style="@style/NameStyle" />
     </ScrollView>
 </LinearLayout>
