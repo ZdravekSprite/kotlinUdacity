@@ -280,3 +280,9 @@ MainActivity.kt
 22+        binding.doneButton.setOnClickListener {
 
 8-import android.widget.Button
+
+MyName.kt
+
+package com.example.android.aboutme
+
+data class MyName(var name: String = "", var nickname: String = "")
