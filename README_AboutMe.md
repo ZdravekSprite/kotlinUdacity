@@ -142,3 +142,4 @@ activity_main.xml
 9+    android:paddingEnd="@dimen/padding">
 
 
+-- 04 Add EditText, Done Button, ClickHandler
