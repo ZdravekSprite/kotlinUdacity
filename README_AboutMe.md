@@ -71,3 +71,9 @@ activity_main.xml
 13+        android:textAlignment="center"
 14+        style="@style/NameStyle" />
 
+4+    xmlns:app="http://schemas.android.com/apk/res-auto"
+16+    <ImageView
+17+        android:id="@+id/star_image"
+18+        android:layout_width="match_parent"
+19+        android:layout_height="wrap_content"
+20+        app:srcCompat="@android:drawable/btn_star_big_on" />
