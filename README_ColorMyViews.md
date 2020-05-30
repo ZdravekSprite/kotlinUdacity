@@ -12,3 +12,13 @@ activity_main.xml
 6+    android:id="@+id/constraint_layout"
 
 12+        android:id="@+id/box_one_text"
+
+
+add res/values/dimens.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_wide">16dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="box_text_size">24sp</dimen>
+</resources>
