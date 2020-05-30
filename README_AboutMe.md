@@ -278,3 +278,5 @@ MainActivity.kt
 
 22-        findViewById<Button>(R.id.done_button).setOnClickListener {
 22+        binding.doneButton.setOnClickListener {
+
+8-import android.widget.Button
