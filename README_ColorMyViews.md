@@ -43,3 +43,9 @@ activity_main.xml
 18-        android:text="Hello World!"
 18+        android:text="@string/box_one"
 
+19-        app:layout_constraintBottom_toBottomOf="parent"
+20-        app:layout_constraintLeft_toLeftOf="parent"
+21-        app:layout_constraintRight_toRightOf="parent"
+19+        app:layout_constraintEnd_toEndOf="parent"
+20+        app:layout_constraintStart_toStartOf="parent"
+
