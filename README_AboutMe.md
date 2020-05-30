@@ -325,3 +325,5 @@ activity_main.xml
 MainActivity.kt
 
 16+    private val myName: MyName = MyName("Zdravko Šplajt")
+
+21+        binding.myName = myName
