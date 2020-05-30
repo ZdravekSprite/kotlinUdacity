@@ -213,3 +213,5 @@ MainActivity.kt
 17+    private fun addNickname(view: View?) {
 18+
 19+    }
+
+5+import android.view.View

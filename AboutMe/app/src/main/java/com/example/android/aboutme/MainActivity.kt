@@ -2,6 +2,7 @@ package com.example.android.aboutme
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
