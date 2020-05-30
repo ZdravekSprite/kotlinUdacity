@@ -188,3 +188,22 @@ MainActivity.kt
 38+    }
 
 3+import android.graphics.Color
+
+
+activity_main.xml
+
+26+        style="@style/whiteBox"
+
+
+res/values/styles.xml
+
+11-        <item name="android:background">@android:color/holo_green_light</item>
+11+        <item name="android:background">@android:color/white</item>
+
+
+activity_main.xml
+
+9-    tools:context=".MainActivity">
+9+    tools:context=".MainActivity"
+10+    tools:background="@android:color/holo_blue_light">
+

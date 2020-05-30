@@ -6,7 +6,8 @@
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:background="@android:color/holo_blue_light">
 
     <TextView
         android:id="@+id/box_one_text"
@@ -23,6 +24,7 @@
 
     <TextView
         android:id="@+id/box_two_text"
+        style="@style/whiteBox"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="@dimen/margin_wide"
