@@ -206,3 +206,10 @@ app/build.gradle
 33-    testImplementation 'junit:junit:4.12'
 33+    testImplementation 'junit:junit:4.13'
 
+
+activity_main.xml
+
+16-        android:src="@drawable/empty_dice"
+16+        app:srcCompat="@drawable/empty_dice"
+
+
