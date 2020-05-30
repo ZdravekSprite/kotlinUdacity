@@ -252,3 +252,12 @@ app/build.gradle
 25+    dataBinding {
 26+        enabled = true
 27+    }
+
+
+activity_main.xml
+
+2-<LinearLayout
+2+<layout
+5+
+6+<LinearLayout
+69+</layout>
