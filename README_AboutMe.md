@@ -42,3 +42,12 @@ activity_main.xml
 11-        android:text="@string/name" />
 11+        android:text="@string/name"
 12+        android:textAlignment="center" />
+
+dimens.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size">20sp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="layout_margin">16dp</dimen>
+</resources>
