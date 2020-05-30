@@ -243,3 +243,5 @@ MainActivity.kt
 35+        if (view != null) {
 36+            imm.hideSoftInputFromWindow(view.windowToken, 0)
 37+        }
+
+-- 05 Implement Data Binding
