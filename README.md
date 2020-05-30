@@ -134,3 +134,15 @@ MainActivity.kt
 -- 08a Text to Images
 
 adding images in app/src/main/res/drawable
+
+activity_main.xml
+
+11-    <TextView
+12-        android:id="@+id/result_text"
+11+    <ImageView
+12+        android:id="@+id/dice_image"
+16-        android:textSize="30sp"
+17-        android:text=""
+18-        tools:text="1" />
+16+        android:src="@drawable/empty_dice"
+17+        tools:src="@drawable/dice_1" />
