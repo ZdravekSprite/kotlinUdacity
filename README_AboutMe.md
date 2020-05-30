@@ -226,3 +226,8 @@ MainActivity.kt
 25+        editText.visibility = View.GONE
 26+        view.visibility = View.GONE
 27+        nicknameTextView.visibility = View.VISIBLE
+
+28+
+29+        // Hide the keyboard.
+30+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+31+        imm.hideSoftInputFromWindow(view.windowToken, 0)
