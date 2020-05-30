@@ -168,4 +168,13 @@ MainActivity.kt
 6-import android.widget.TextView
 6+import android.widget.ImageView
 
+22+        val drawableResource = when (randomInt) {
+23+            1 -> R.drawable.dice_1
+24+            2 -> R.drawable.dice_2
+25+            3 -> R.drawable.dice_3
+26+            4 -> R.drawable.dice_4
+27+            5 -> R.drawable.dice_5
+28+            else -> R.drawable.dice_6
+29+        }
+
 
