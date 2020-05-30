@@ -312,3 +312,11 @@ activity_main.xml
 77+            android:textAppearance="@style/NameStyle" />
 
 
+dimens.xml
+
+7+    <dimen name="line_spacing_multiplier">1.2</dimen>
+
+
+activity_main.xml
+
+77+            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
