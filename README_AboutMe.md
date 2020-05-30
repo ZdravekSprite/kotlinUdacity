@@ -154,3 +154,12 @@ activity_main.xml
 24+        android:inputType="textPersonName"
 25+        style="@style/NameStyle" />
 
+string.xml
+
+16+    <string name="what_is_your_nickname">What is your nickname</string>
+
+
+activity_main.xml
+
+24+        android:hint="@string/what_is_your_nickname"
+
