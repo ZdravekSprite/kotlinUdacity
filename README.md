@@ -193,3 +193,7 @@ MainActivity.kt
 22+        diceImage = findViewById(R.id.dice_image)
 
 36-        val diceImage: ImageView = findViewById(R.id.dice_image)
+
+
+-- 10a Vector Drawables
+
