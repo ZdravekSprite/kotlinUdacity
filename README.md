@@ -191,3 +191,5 @@ MainActivity.kt
 
 21+
 22+        diceImage = findViewById(R.id.dice_image)
+
+36-        val diceImage: ImageView = findViewById(R.id.dice_image)
