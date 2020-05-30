@@ -296,3 +296,10 @@ activity_main.xml
 9+            type="com.example.android.aboutme.MyName" />
 10+    </data>
 11+
+
+23-        android:text="@string/name"
+23+        android:text="@={myName.name}"
+51+        android:text="@={myName.nickname}"
+31+        android:text="@={myName.nickname}"
+
+
