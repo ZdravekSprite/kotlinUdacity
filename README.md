@@ -183,3 +183,8 @@ MainActivity.kt
 
 -- 09a late initialization
 
+MainActivity.kt
+
+10+
+11+    lateinit var diceImage: ImageView
+12+ 
