@@ -206,3 +206,6 @@ MainActivity.kt
 11+       findViewById<Button>(R.id.done_button).setOnClickListener {
 12+            addNickname(it)
 13+        }
+
+5+import android.widget.Button
+
