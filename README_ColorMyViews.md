@@ -22,3 +22,14 @@ add res/values/dimens.xml
     <dimen name="margin_half">8dp</dimen>
     <dimen name="box_text_size">24sp</dimen>
 </resources>
+
+
+activity_main.xml
+
+13-        android:layout_width="wrap_content"
+13+        android:layout_width="0dp"
+15+        android:layout_marginStart="@dimen/margin_wide"
+16+        android:layout_marginTop="@dimen/margin_wide"
+17+        android:layout_marginEnd="@dimen/margin_wide"
+
+
