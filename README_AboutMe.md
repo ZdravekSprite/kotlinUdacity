@@ -88,3 +88,5 @@ activity_main.xml
 
 21+        android:layout_marginTop="@dimen/layout_margin"
 
+
+--03 Add a ScrollView
