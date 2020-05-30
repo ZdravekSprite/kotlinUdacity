@@ -33,3 +33,13 @@ activity_main.xml
 17+        android:layout_marginEnd="@dimen/margin_wide"
 
 
+res/values/strings.xml
+
+3+    <string name="box_one">Box One</string>
+
+
+activity_main.xml
+
+18-        android:text="Hello World!"
+18+        android:text="@string/box_one"
+
