@@ -130,3 +130,25 @@ activity_main.xml
 62+        app:layout_constraintVertical_chainStyle="spread_inside" />
 63+
 
+
+res/values/strings.xml
+
+7+    <string name="box_five">Box Five</string>
+
+activity_main.xml
+
+59+        app:layout_constraintBottom_toTopOf="@+id/box_five_text"
+65+    <TextView
+66+        android:id="@+id/box_five_text"
+67+        style="@style/whiteBox"
+68+        android:layout_width="0dp"
+69+        android:layout_height="wrap_content"
+70+        android:layout_marginStart="@dimen/margin_wide"
+71+        android:layout_marginEnd="@dimen/margin_wide"
+72+        android:text="@string/box_five"
+73+        app:layout_constraintBottom_toBottomOf="@+id/box_two_text"
+74+        app:layout_constraintEnd_toEndOf="parent"
+75+        app:layout_constraintStart_toEndOf="@+id/box_two_text"
+76+        app:layout_constraintTop_toBottomOf="@+id/box_four_text" />
+77+
+
