@@ -261,3 +261,10 @@ activity_main.xml
 5+
 6+<LinearLayout
 69+</layout>
+
+
+MainActivity.kt
+
+13+
+14+    private lateinit var binding: ActivityMainBinding
+15+
