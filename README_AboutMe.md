@@ -346,3 +346,5 @@ MainActivity.kt
 35+            nicknameText.visibility = View.VISIBLE
 36+        } 
 
+8-import android.widget.EditText
+9-import android.widget.TextView
