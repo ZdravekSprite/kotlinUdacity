@@ -39,7 +39,10 @@
     <TextView
         android:id="@+id/nickname_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:visibility="gone"
+        style="@style/NameStyle" />
 
     <ImageView
         android:id="@+id/star_image"

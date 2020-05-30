@@ -191,3 +191,8 @@ activity_main.xml
 41+        android:layout_width="match_parent"
 42+        android:layout_height="wrap_content" />
 
+42-        android:layout_height="wrap_content" />
+42+        android:layout_height="wrap_content"
+43+        android:textAlignment="center"
+44+        android:visibility="gone"
+45+        style="@style/NameStyle" />
