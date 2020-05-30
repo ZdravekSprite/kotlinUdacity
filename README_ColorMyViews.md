@@ -63,3 +63,6 @@ res/values/styles.xml
 15+        <item name="android:textColor">@android:color/white</item>
 16+        <item name="android:fontFamily">@font/roboto</item>
 17+    </style>
+
+
+-- 01 Add Aligned Boxes with Click Handlers
