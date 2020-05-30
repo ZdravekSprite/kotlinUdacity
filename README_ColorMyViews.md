@@ -49,3 +49,17 @@ activity_main.xml
 19+        app:layout_constraintEnd_toEndOf="parent"
 20+        app:layout_constraintStart_toStartOf="parent"
 
+13+        style="@style/whiteBox"
+
+
+res/values/styles.xml
+
+9+
+10+    <style name="whiteBox">
+11+        <item name="android:background">@android:color/holo_green_light</item>
+12+        <item name="android:textAlignment">center</item>
+13+        <item name="android:textSize">@dimen/box_text_size</item>
+14+        <item name="android:textStyle">bold</item>
+15+        <item name="android:textColor">@android:color/white</item>
+16+        <item name="android:fontFamily">@font/roboto</item>
+17+    </style>
