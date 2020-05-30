@@ -196,3 +196,8 @@ activity_main.xml
 43+        android:textAlignment="center"
 44+        android:visibility="gone"
 45+        style="@style/NameStyle" />
+
+
+MainActivity.kt
+
+9+        setContentView(R.layout.activity_main)
