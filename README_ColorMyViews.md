@@ -84,4 +84,24 @@ activity_main.xml
 32+        app:layout_constraintStart_toStartOf="parent"
 33+        app:layout_constraintTop_toBottomOf="@+id/box_one_text"
 34+        app:layout_constraintVertical_bias="0.0" />
-25+
+35+
+
+
+res/values/strings.xml
+
+5+    <string name="box_three">Box Three</string>
+
+activity_main.xml
+
+36+    <TextView
+37+        android:id="@+id/box_three_text"
+38+        style="@style/whiteBox"
+39+        android:layout_width="0dp"
+40+        android:layout_height="wrap_content"
+41+        android:layout_marginStart="@dimen/margin_wide"
+42+        android:layout_marginEnd="@dimen/margin_wide"
+43+        android:text="@string/box_three"
+44+        app:layout_constraintEnd_toEndOf="parent"
+45+        app:layout_constraintStart_toEndOf="@+id/box_two_text"
+46+        app:layout_constraintTop_toTopOf="@+id/box_two_text" />
+47+
