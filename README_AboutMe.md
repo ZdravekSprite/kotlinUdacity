@@ -201,3 +201,8 @@ activity_main.xml
 MainActivity.kt
 
 9+        setContentView(R.layout.activity_main)
+
+10+
+11+       findViewById<Button>(R.id.done_button).setOnClickListener {
+12+            addNickname(it)
+13+        }
