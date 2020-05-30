@@ -197,3 +197,12 @@ MainActivity.kt
 
 -- 10a Vector Drawables
 
+app/build.gradle
+
+15-
+16+        vectorDrawables.useSupportLibrary = true
+30-    implementation 'androidx.core:core-ktx:1.1.0'
+30+    implementation 'androidx.core:core-ktx:1.3.0'
+33-    testImplementation 'junit:junit:4.12'
+33+    testImplementation 'junit:junit:4.13'
+
