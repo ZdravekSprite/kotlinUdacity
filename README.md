@@ -212,4 +212,6 @@ activity_main.xml
 16-        android:src="@drawable/empty_dice"
 16+        app:srcCompat="@drawable/empty_dice"
 
+4+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
 
