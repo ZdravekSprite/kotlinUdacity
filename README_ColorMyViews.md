@@ -169,3 +169,5 @@ MainActivity.kt
 21+        }
 22+    }
 
+5+import android.view.View
+6+import kotlinx.android.synthetic.main.activity_main.*
