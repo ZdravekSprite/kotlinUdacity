@@ -185,3 +185,9 @@ activity_main.xml
 35+        android:fontFamily="@font/roboto"
 36+        android:text="@string/done"
 37+        style="@style/Widget.AppCompat.Button.Colored" />
+
+39+    <TextView
+40+        android:id="@+id/nickname_text"
+41+        android:layout_width="match_parent"
+42+        android:layout_height="wrap_content" />
+
