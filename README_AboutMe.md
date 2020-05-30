@@ -38,3 +38,7 @@ activity_main.xml
 
 11-        android:text="Zdravko Šplajt" />
 11+        android:text="@string/name" />
+
+11-        android:text="@string/name" />
+11+        android:text="@string/name"
+12+        android:textAlignment="center" />
