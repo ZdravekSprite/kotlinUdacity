@@ -245,3 +245,10 @@ MainActivity.kt
 37+        }
 
 -- 05 Implement Data Binding
+
+app/build.gradle
+
+24+
+25+    dataBinding {
+26+        enabled = true
+27+    }
