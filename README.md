@@ -187,4 +187,7 @@ MainActivity.kt
 
 10+
 11+    lateinit var diceImage: ImageView
-12+ 
+12+
+
+21+
+22+        diceImage = findViewById(R.id.dice_image)
