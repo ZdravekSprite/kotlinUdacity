@@ -77,3 +77,11 @@ activity_main.xml
 18+        android:layout_width="match_parent"
 19+        android:layout_height="wrap_content"
 20+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+string.xml
+
+4+    <string name="yellow_star">Yellow star</string>
+
+activity_main.xml
+
+21+        android:contentDescription="@string/yellow_star"
