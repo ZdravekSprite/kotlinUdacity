@@ -231,3 +231,6 @@ MainActivity.kt
 29+        // Hide the keyboard.
 30+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 31+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+
+3+import android.content.Context
+7+import android.view.inputmethod.InputMethodManager
