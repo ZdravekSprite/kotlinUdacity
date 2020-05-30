@@ -181,4 +181,5 @@ MainActivity.kt
 32+        diceImage.setImageResource(drawableResource)
 33+        diceImage.contentDescription = randomInt.toString()
 
+-- 09a late initialization
 
