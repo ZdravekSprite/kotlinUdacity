@@ -10,4 +10,14 @@ class MainActivity : AppCompatActivity() {
 
         setListeners()
     }
+
+    private fun setListeners() {
+        val clickableViews: List<View> =
+            listOf(box_one_text, box_two_text, box_three_text,
+                box_four_text, box_five_text)
+
+        for (item in clickableViews) {
+            item.setOnClickListener { makeColored(it) }
+        }
+    }
 }

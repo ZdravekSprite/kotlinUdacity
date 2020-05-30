@@ -158,3 +158,14 @@ MainActivity.kt
 11+
 12+        setListeners()
 
+13+
+14+    private fun setListeners() {
+15+        val clickableViews: List<View> =
+16+            listOf(box_one_text, box_two_text, box_three_text,
+17+                box_four_text, box_five_text)
+18+
+19+        for (item in clickableViews) {
+20+            item.setOnClickListener { makeColored(it) }
+21+        }
+22+    }
+
