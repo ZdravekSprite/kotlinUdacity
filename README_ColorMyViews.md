@@ -152,3 +152,9 @@ activity_main.xml
 76+        app:layout_constraintTop_toBottomOf="@+id/box_four_text" />
 77+
 
+
+MainActivity.kt
+
+11+
+12+        setListeners()
+
