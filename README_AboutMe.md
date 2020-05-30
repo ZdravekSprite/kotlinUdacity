@@ -175,7 +175,13 @@ activity_main.xml
 
 29+    <Button
 30+        android:id="@+id/done_button"
-31+        android:layout_width="match_parent"
+31+        android:layout_width="wrap_content"
 32+        android:layout_height="wrap_content"
 33+        android:text="@string/done" />
 
+33-        android:text="@string/done" />
+33+        android:layout_gravity="center_horizontal"
+34+        android:layout_marginTop="@dimen/layout_margin"
+35+        android:fontFamily="@font/roboto"
+36+        android:text="@string/done"
+37+        style="@style/Widget.AppCompat.Button.Colored" />
