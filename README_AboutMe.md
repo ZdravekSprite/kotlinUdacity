@@ -286,3 +286,13 @@ MyName.kt
 package com.example.android.aboutme
 
 data class MyName(var name: String = "", var nickname: String = "")
+
+
+activity_main.xml
+
+6+    <data>
+7+        <variable
+8+            name="myName"
+9+            type="com.example.android.aboutme.MyName" />
+10+    </data>
+11+
