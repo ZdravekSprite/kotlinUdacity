@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val diceImage: ImageView = findViewById(R.id.dice_image)
-        resultText.text = randomInt.toString()
+        diceImage.setImageResource(drawableResource)
+        diceImage.contentDescription = randomInt.toString()
     }
 }

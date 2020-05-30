@@ -177,4 +177,8 @@ MainActivity.kt
 28+            else -> R.drawable.dice_6
 29+        }
 
+32-        resultText.text = randomInt.toString()
+32+        diceImage.setImageResource(drawableResource)
+33+        diceImage.contentDescription = randomInt.toString()
+
 
