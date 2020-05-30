@@ -115,3 +115,12 @@ string.xml
 13+\n\nI\'ll be happy to teach you how to make your own aquarium.
 14+\nYou should ask someone else about fishing, though.\n\n
 15+    </string>
+
+
+activity_main.xml
+
+29+        <TextView
+30+            android:id="@+id/bio_text"
+31+            android:layout_width="match_parent"
+32+            android:layout_height="wrap_content"
+33+            android:text="@string/bio" />
