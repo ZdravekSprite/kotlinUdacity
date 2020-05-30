@@ -26,6 +26,12 @@
         android:textAlignment="center"
         style="@style/NameStyle" />
 
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/done" />
+
     <ImageView
         android:id="@+id/star_image"
         android:layout_width="match_parent"

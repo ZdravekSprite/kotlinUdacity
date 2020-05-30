@@ -166,3 +166,16 @@ activity_main.xml
 26+        android:textAlignment="center"
 
 
+string.xml
+
+17+    <string name="done">Done</string>
+
+
+activity_main.xml
+
+29+    <Button
+30+        android:id="@+id/done_button"
+31+        android:layout_width="match_parent"
+32+        android:layout_height="wrap_content"
+33+        android:text="@string/done" />
+
