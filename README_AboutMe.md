@@ -163,3 +163,6 @@ activity_main.xml
 
 24+        android:hint="@string/what_is_your_nickname"
 
+26+        android:textAlignment="center"
+
+
