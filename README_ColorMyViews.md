@@ -66,3 +66,22 @@ res/values/styles.xml
 
 
 -- 01 Add Aligned Boxes with Click Handlers
+
+res/values/strings.xml
+
+4+    <string name="box_two">Box Two</string>
+
+activity_main.xml
+
+24+    <TextView
+25+        android:id="@+id/box_two_text"
+26+        android:layout_width="130dp"
+27+        android:layout_height="130dp"
+28+        android:layout_marginStart="@dimen/margin_wide"
+29+        android:layout_marginTop="@dimen/margin_wide"
+30+        android:layout_marginBottom="@dimen/margin_half"
+31+        android:text="@string/box_two"
+32+        app:layout_constraintStart_toStartOf="parent"
+33+        app:layout_constraintTop_toBottomOf="@+id/box_one_text"
+34+        app:layout_constraintVertical_bias="0.0" />
+25+
