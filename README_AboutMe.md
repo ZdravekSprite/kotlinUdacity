@@ -302,4 +302,13 @@ activity_main.xml
 51+        android:text="@={myName.nickname}"
 31+        android:text="@={myName.nickname}"
 
+46+        android:textAlignment="center"
+32-        android:ems="10"
+66+        android:id="@+id/bio_scroll"
+68-        android:layout_height="match_parent">
+68+        android:layout_height="match_parent"
+69+        android:layout_marginTop="@dimen/layout_margin">
+77-            style="@style/NameStyle" />
+77+            android:textAppearance="@style/NameStyle" />
+
 

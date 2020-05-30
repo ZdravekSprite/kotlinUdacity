@@ -29,7 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@={myName.nickname}"
-        android:ems="10"
         android:hint="@string/what_is_your_nickname"
         android:inputType="textPersonName"
         android:textAlignment="center"
@@ -43,6 +42,7 @@
         android:layout_marginTop="@dimen/layout_margin"
         android:fontFamily="@font/roboto"
         android:text="@string/done"
+        android:textAlignment="center"
         style="@style/Widget.AppCompat.Button.Colored" />
 
     <TextView
@@ -63,15 +63,18 @@
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <ScrollView
+        android:id="@+id/bio_scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/layout_margin">
+
 
         <TextView
             android:id="@+id/bio_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/bio"
-            style="@style/NameStyle" />
+            android:textAppearance="@style/NameStyle" />
     </ScrollView>
 </LinearLayout>
 </layout>
