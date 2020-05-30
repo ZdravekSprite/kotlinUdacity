@@ -25,11 +25,15 @@ class MainActivity : AppCompatActivity() {
 
         nicknameTextView.text = editText.text
         editText.visibility = View.GONE
-        view.visibility = View.GONE
+        if (view != null) {
+            view.visibility = View.GONE
+        }
         nicknameTextView.visibility = View.VISIBLE
 
         // Hide the keyboard.
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
+        if (view != null) {
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }

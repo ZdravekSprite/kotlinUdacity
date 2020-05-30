@@ -234,3 +234,12 @@ MainActivity.kt
 
 3+import android.content.Context
 7+import android.view.inputmethod.InputMethodManager
+
+28-        view.visibility = View.GONE
+28+        if (view != null) {
+29+            view.visibility = View.GONE
+30+        }
+35-        imm.hideSoftInputFromWindow(view.windowToken, 0)
+35+        if (view != null) {
+36+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+37+        }
