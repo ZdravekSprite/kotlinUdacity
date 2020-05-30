@@ -270,3 +270,6 @@ MainActivity.kt
 15+
 
 11+import com.example.android.aboutme.databinding.ActivityMainBinding
+
+19-        setContentView(R.layout.activity_main)
+19+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
