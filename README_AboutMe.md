@@ -275,3 +275,6 @@ MainActivity.kt
 19+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 11+import androidx.databinding.DataBindingUtil
+
+22-        findViewById<Button>(R.id.done_button).setOnClickListener {
+22+        binding.doneButton.setOnClickListener {
