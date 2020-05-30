@@ -100,3 +100,18 @@ activity_main.xml
 27+        android:layout_height="match_parent">
 28+
 29+    </ScrollView>
+
+
+string.xml
+
+5+    <string name="bio">Hi, my name is Zdravko.
+6+\n\nI love fish.
+7+\n\nThe kind that is alive and swims around in an aquarium or river, or a lake, and definitely the ocean.
+8+\nFun fact is that I have several aquariums and also a river.
+9+\n\nI like eating fish, too. Raw fish. Grilled fish. Smoked fish. Poached fish - not so much.
+10+\nAnd sometimes I even go fishing.
+11+\nAnd even less sometimes, I actually catch something.
+12+\n\nOnce, when I was camping in Canada, and very hungry, I even caught a large salmon with my hands.
+13+\n\nI\'ll be happy to teach you how to make your own aquarium.
+14+\nYou should ask someone else about fishing, though.\n\n
+15+    </string>
