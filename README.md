@@ -146,3 +146,16 @@ activity_main.xml
 18-        tools:text="1" />
 16+        android:src="@drawable/empty_dice"
 17+        tools:src="@drawable/dice_1" />
+
+
+app/src/main/res/values/strings.xml
+
+4+    <string name="blank_string" />
+
+activity_main.xml
+
+17-        tools:src="@drawable/dice_1" />
+17+        tools:src="@drawable/dice_1"
+18+        android:contentDescription="@string/blank_string"
+19+        tools:contentDescription="1" />
+
