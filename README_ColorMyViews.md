@@ -105,3 +105,28 @@ activity_main.xml
 45+        app:layout_constraintStart_toEndOf="@+id/box_two_text"
 46+        app:layout_constraintTop_toTopOf="@+id/box_two_text" />
 47+
+
+
+res/values/strings.xml
+
+6+    <string name="box_four">Box Four</string>
+
+activity_main.xml
+
+44+        app:layout_constraintBottom_toTopOf="@+id/box_four_text"
+49+    <TextView
+50+        android:id="@+id/box_four_text"
+51+        style="@style/whiteBox"
+52+        android:layout_width="0dp"
+53+        android:layout_height="wrap_content"
+54+        android:layout_marginStart="@dimen/margin_wide"
+55+        android:layout_marginTop="@dimen/margin_wide"
+56+        android:layout_marginEnd="@dimen/margin_wide"
+57+        android:layout_marginBottom="@dimen/margin_wide"
+58+        android:text="@string/box_four"
+59+        app:layout_constraintEnd_toEndOf="parent"
+60+        app:layout_constraintStart_toEndOf="@+id/box_two_text"
+61+        app:layout_constraintTop_toBottomOf="@+id/box_three_text"
+62+        app:layout_constraintVertical_chainStyle="spread_inside" />
+63+
+
