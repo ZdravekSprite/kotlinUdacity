@@ -221,3 +221,8 @@ MainActivity.kt
 
 7+import android.widget.EditText
 8+import android.widget.TextView
+
+24+        nicknameTextView.text = editText.text
+25+        editText.visibility = View.GONE
+26+        view.visibility = View.GONE
+27+        nicknameTextView.visibility = View.VISIBLE
