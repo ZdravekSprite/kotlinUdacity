@@ -26,16 +26,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addNickname(view: View?) {
-        val editText = findViewById<EditText>(R.id.nickname_edit)
-        val nicknameTextView = findViewById<TextView>(R.id.nickname_text)
+        binding.apply {
+            myName?.nickname = nicknameEdit.text.toString()
+            invalidateAll()
+            nicknameEdit.visibility = View.GONE
+            doneButton.visibility = View.GONE
 
-        nicknameTextView.text = editText.text
-        editText.visibility = View.GONE
-        if (view != null) {
-            view.visibility = View.GONE
+            nicknameText.visibility = View.VISIBLE
         }
-        nicknameTextView.visibility = View.VISIBLE
-
         // Hide the keyboard.
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         if (view != null) {

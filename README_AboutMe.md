@@ -327,3 +327,22 @@ MainActivity.kt
 16+    private val myName: MyName = MyName("Zdravko Šplajt")
 
 21+        binding.myName = myName
+
+29-        val editText = findViewById<EditText>(R.id.nickname_edit)
+30-        val nicknameTextView = findViewById<TextView>(R.id.nickname_text)
+31-
+32-        nicknameTextView.text = editText.text
+33-        editText.visibility = View.GONE
+34-        if (view != null) {
+35-            view.visibility = View.GONE
+36-        }
+37-        nicknameTextView.visibility = View.VISIBLE
+29+        binding.apply {
+30+            myName?.nickname = nicknameEdit.text.toString()
+31+            invalidateAll()
+32+            nicknameEdit.visibility = View.GONE
+33+            doneButton.visibility = View.GONE
+34+
+35+            nicknameText.visibility = View.VISIBLE
+36+        } 
+
