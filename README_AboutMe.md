@@ -320,3 +320,8 @@ dimens.xml
 activity_main.xml
 
 77+            android:lineSpacingMultiplier="@dimen/line_spacing_multiplier"
+
+
+MainActivity.kt
+
+16+    private val myName: MyName = MyName("Zdravko Šplajt")
