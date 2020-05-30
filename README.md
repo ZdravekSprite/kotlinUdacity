@@ -159,3 +159,13 @@ activity_main.xml
 18+        android:contentDescription="@string/blank_string"
 19+        tools:contentDescription="1" />
 
+
+MainActivity.kt
+
+23-        val resultText: TextView = findViewById(R.id.result_text)
+23+        val diceImage: ImageView = findViewById(R.id.dice_image)
+
+6-import android.widget.TextView
+6+import android.widget.ImageView
+
+
