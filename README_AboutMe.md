@@ -268,3 +268,5 @@ MainActivity.kt
 13+
 14+    private lateinit var binding: ActivityMainBinding
 15+
+
+11+import com.example.android.aboutme.databinding.ActivityMainBinding
