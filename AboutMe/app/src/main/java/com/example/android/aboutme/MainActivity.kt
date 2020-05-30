@@ -13,4 +13,8 @@ class MainActivity : AppCompatActivity() {
             addNickname(it)
         }
     }
+
+    private fun addNickname(view: View?) {
+
+    }
 }

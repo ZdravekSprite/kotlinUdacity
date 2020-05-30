@@ -209,3 +209,7 @@ MainActivity.kt
 
 5+import android.widget.Button
 
+16+
+17+    private fun addNickname(view: View?) {
+18+
+19+    }
