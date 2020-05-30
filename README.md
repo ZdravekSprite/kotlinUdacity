@@ -215,3 +215,8 @@ activity_main.xml
 4+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
 
+MainActivity.kt
+
+11-    lateinit var diceImage: ImageView
+11+    private lateinit var diceImage: ImageView
+
