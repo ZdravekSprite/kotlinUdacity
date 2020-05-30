@@ -21,4 +21,10 @@
         android:layout_marginTop="@dimen/layout_margin"
         android:contentDescription="@string/yellow_star"
         app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ScrollView>
 </LinearLayout>

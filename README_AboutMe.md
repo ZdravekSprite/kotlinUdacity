@@ -90,3 +90,13 @@ activity_main.xml
 
 
 --03 Add a ScrollView
+
+
+activity_main.xml
+
+24+
+25+    <ScrollView
+26+        android:layout_width="match_parent"
+27+        android:layout_height="match_parent">
+28+
+29+    </ScrollView>
