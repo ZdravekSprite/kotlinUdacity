@@ -128,3 +128,17 @@ activity_main.xml
 33-            android:text="@string/bio" />
 33+            android:text="@string/bio"
 34+            style="@style/NameStyle" />
+
+
+dimens.xml
+
+6+    <dimen name="padding">16dp</dimen>
+
+activity_main.xml
+
+7-    android:layout_height="match_parent">
+7+    android:layout_height="match_parent"
+8+    android:paddingStart="@dimen/padding"
+9+    android:paddingEnd="@dimen/padding">
+
+
