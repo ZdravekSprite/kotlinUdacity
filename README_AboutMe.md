@@ -13,7 +13,8 @@ activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+	android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 </LinearLayout>
@@ -22,11 +23,11 @@ activity_main.xml
 
 activity_main.xml
 
-7+    <TextView
-8+        android:id="@+id/textView"
-9+        android:layout_width="match_parent"
-10+        android:layout_height="wrap_content"
-11+        android:text="Zdravko Šplajt" />
+8+    <TextView
+9+        android:id="@+id/textView"
+10+        android:layout_width="match_parent"
+11+        android:layout_height="wrap_content"
+12+        android:text="Zdravko Šplajt" />
 
 
 string.xml
@@ -36,12 +37,12 @@ string.xml
 
 activity_main.xml
 
-11-        android:text="Zdravko Šplajt" />
-11+        android:text="@string/name" />
+12-        android:text="Zdravko Šplajt" />
+12+        android:text="@string/name" />
 
-11-        android:text="@string/name" />
-11+        android:text="@string/name"
-12+        android:textAlignment="center" />
+12-        android:text="@string/name" />
+12+        android:text="@string/name"
+13+        android:textAlignment="center" />
 
 dimens.xml
 
@@ -54,5 +55,19 @@ dimens.xml
 
 font/roboto.ttf
 
+styles.xml
 
+10+    <style name="NameStyle">
+11+        <item name="android:layout_marginTop">@dimen/layout_margin</item>
+12+        <item name="android:fontFamily">@font/roboto</item>
+13+        <item name="android:paddingTop">@dimen/small_padding</item>
+14+        <item name="android:textColor">@android:color/black</item>
+15+        <item name="android:textSize">@dimen/text_size</item>
+16+    </style>
+
+activity_main.xml
+
+13-        android:textAlignment="center" />
+13+        android:textAlignment="center"
+14+        style="@style/NameStyle" />
 
