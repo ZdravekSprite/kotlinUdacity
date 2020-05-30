@@ -143,3 +143,14 @@ activity_main.xml
 
 
 -- 04 Add EditText, Done Button, ClickHandler
+
+activity_main.xml
+
+19+    <EditText
+20+        android:id="@+id/nickname_edit"
+21+        android:layout_width="match_parent"
+22+        android:layout_height="wrap_content"
+23+        android:ems="10"
+24+        android:inputType="textPersonName"
+25+        style="@style/NameStyle" />
+
