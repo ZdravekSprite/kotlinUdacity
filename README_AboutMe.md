@@ -215,3 +215,6 @@ MainActivity.kt
 19+    }
 
 5+import android.view.View
+
+19        val editText = findViewById<EditText>(R.id.nickname_edit)
+20        val nicknameTextView = findViewById<TextView>(R.id.nickname_text)
