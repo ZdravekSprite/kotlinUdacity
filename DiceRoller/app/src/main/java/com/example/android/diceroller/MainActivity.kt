@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private fun rollDice() {
         val randomInt = Random().nextInt(6) + 1
 
-        val resultText: TextView = findViewById(R.id.result_text)
+        val diceImage: ImageView = findViewById(R.id.dice_image)
         resultText.text = randomInt.toString()
     }
 }
