@@ -324,3 +324,14 @@ colors.xml
 7+    <color name="my_red">#E54304</color>
 8+    <color name="my_yellow">#FFC107</color>
 
+
+MainActivity.kt
+
+20-                box_four_text, box_five_text)
+20+                box_four_text, box_five_text, constraint_layout,
+21+                red_button, green_button, yellow_button)
+38+            R.id.red_button -> box_three_text.setBackgroundResource(R.color.my_red)
+39+            R.id.yellow_button -> box_four_text.setBackgroundResource(R.color.my_yellow)
+40+            R.id.green_button -> box_five_text.setBackgroundResource(R.color.my_green)
+
+
