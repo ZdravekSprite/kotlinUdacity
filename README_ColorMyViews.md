@@ -297,3 +297,24 @@ activity_main.xml
 116+        app:layout_constraintBaseline_toBaselineOf="@+id/yellow_button"
 117+        app:layout_constraintEnd_toStartOf="@+id/yellow_button"
 
+
+strings.xml
+
+12+    <string name="button_green">GREEN</string>
+
+
+activity_main.xml
+
+136+    <Button
+137+        android:id="@+id/green_button"
+138+        android:layout_width="wrap_content"
+139+        android:layout_height="wrap_content"
+140+        android:fontFamily="@font/roboto"
+141+        android:text="@string/button_green"
+142+        app:layout_constraintBaseline_toBaselineOf="@+id/yellow_button"
+143+        app:layout_constraintEnd_toEndOf="parent"
+144+        app:layout_constraintHorizontal_bias="0.5"
+145+        app:layout_constraintStart_toEndOf="@+id/yellow_button" />
+146+
+131+        app:layout_constraintEnd_toStartOf="@+id/green_button"
+
