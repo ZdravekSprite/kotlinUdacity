@@ -32,3 +32,5 @@ activity_main.xml
 26+                android:name="com.example.android.navigation.TitleFragment"
 27+                android:layout_width="match_parent"
 28+                android:layout_height="match_parent" />
+
+-- 02 Let’s Navigate Already
