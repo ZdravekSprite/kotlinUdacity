@@ -254,3 +254,21 @@ activity_main.xml
 90+        app:layout_constraintBaseline_toBaselineOf="@+id/info_text"
 
 
+strings.xml
+
+10+    <string name="button_red">RED</string>
+
+
+strings.xml
+
+110+    <Button
+111+        android:id="@+id/red_button"
+112+        android:layout_width="wrap_content"
+113+        android:layout_height="wrap_content"
+114+        android:fontFamily="@font/roboto"
+115+        android:text="@string/button_red"
+116+        app:layout_constraintHorizontal_bias="0.5"
+117+        app:layout_constraintHorizontal_chainStyle="spread"
+118+        app:layout_constraintStart_toStartOf="parent" />
+119+
+
