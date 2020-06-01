@@ -259,7 +259,7 @@ strings.xml
 10+    <string name="button_red">RED</string>
 
 
-strings.xml
+activity_main.xml
 
 110+    <Button
 111+        android:id="@+id/red_button"
@@ -271,4 +271,29 @@ strings.xml
 117+        app:layout_constraintHorizontal_chainStyle="spread"
 118+        app:layout_constraintStart_toStartOf="parent" />
 119+
+
+
+strings.xml
+
+11+    <string name="button_yellow">YELLOW</string>
+
+
+activity_main.xml
+
+120+    <Button
+121+        android:id="@+id/yellow_button"
+122+        android:layout_width="wrap_content"
+123+        android:layout_height="wrap_content"
+124+        android:layout_marginTop="@dimen/margin_half"
+125+        android:layout_marginBottom="@dimen/margin_wide"
+126+        android:fontFamily="@font/roboto"
+127+        android:text="@string/button_yellow"
+128+        app:layout_constraintBottom_toBottomOf="parent"
+129+        app:layout_constraintHorizontal_bias="0.5"
+130+        app:layout_constraintStart_toEndOf="@+id/red_button"
+131+        app:layout_constraintTop_toBottomOf="@+id/label_text"
+132+        app:layout_constraintVertical_bias="1.0" />
+133+
+116+        app:layout_constraintBaseline_toBaselineOf="@+id/yellow_button"
+117+        app:layout_constraintEnd_toStartOf="@+id/yellow_button"
 
