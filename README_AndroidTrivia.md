@@ -24,3 +24,11 @@ class TitleFragment : Fragment() {
         return binding.root
     }
 }
+
+activity_main.xml
+
+24+            <fragment
+25+                android:id="@+id/titleFragment"
+26+                android:name="com.example.android.navigation.TitleFragment"
+27+                android:layout_width="match_parent"
+28+                android:layout_height="match_parent" />
