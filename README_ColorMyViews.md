@@ -207,3 +207,21 @@ activity_main.xml
 9+    tools:context=".MainActivity"
 10+    tools:background="@android:color/holo_blue_light">
 
+strings.xml
+
+8+    <string name="how_to_play">This is a game:</string>
+
+activity_main.xml
+
+80+    <TextView
+81+        android:id="@+id/label_text"
+82+        android:layout_width="wrap_content"
+83+        android:layout_height="wrap_content"
+84+        android:layout_marginStart="@dimen/margin_wide"
+85+        android:fontFamily="@font/roboto"
+86+        android:text="@string/how_to_play"
+87+        android:textSize="@dimen/box_text_size"
+88+        android:textStyle="bold"
+89+        app:layout_constraintStart_toStartOf="parent" />
+90+
+34+        app:layout_constraintBottom_toTopOf="@+id/label_text"

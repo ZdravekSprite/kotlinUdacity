@@ -31,6 +31,7 @@
         android:layout_marginTop="@dimen/margin_wide"
         android:layout_marginBottom="@dimen/margin_half"
         android:text="@string/box_two"
+        app:layout_constraintBottom_toTopOf="@+id/label_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/box_one_text"
         app:layout_constraintVertical_bias="0.0" />
@@ -76,5 +77,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/box_two_text"
         app:layout_constraintTop_toBottomOf="@+id/box_four_text" />
+
+    <TextView
+        android:id="@+id/label_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_wide"
+        android:fontFamily="@font/roboto"
+        android:text="@string/how_to_play"
+        android:textSize="@dimen/box_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
