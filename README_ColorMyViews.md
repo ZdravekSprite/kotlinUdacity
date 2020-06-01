@@ -225,3 +225,32 @@ activity_main.xml
 89+        app:layout_constraintStart_toStartOf="parent" />
 90+
 34+        app:layout_constraintBottom_toTopOf="@+id/label_text"
+
+
+strings.xml
+
+9+    <string name="tap_the_boxes_and_buttons">Tap the screen and buttons.</string>
+
+
+activity_main.xml
+
+92+    <TextView
+93+        android:id="@+id/info_text"
+94+        android:layout_width="wrap_content"
+95+        android:layout_height="wrap_content"
+96+        android:layout_marginStart="@dimen/margin_wide"
+97+        android:layout_marginTop="@dimen/margin_half"
+98+        android:layout_marginBottom="@dimen/margin_half"
+99+        android:layout_marginEnd="@dimen/margin_wide"
+100+        android:fontFamily="@font/roboto"
+101+        android:text="@string/tap_the_boxes_and_buttons"
+102+        app:layout_constraintBottom_toBottomOf="parent"
+103+        app:layout_constraintEnd_toEndOf="parent"
+104+        app:layout_constraintHorizontal_bias="1.0"
+105+        app:layout_constraintStart_toEndOf="@+id/label_text"
+106+        app:layout_constraintTop_toBottomOf="@+id/box_two_text"
+107+        app:layout_constraintVertical_bias="0.12" />
+108+
+90+        app:layout_constraintBaseline_toBaselineOf="@+id/info_text"
+
+
