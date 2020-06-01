@@ -86,3 +86,10 @@ yctivity_main.xml
 28+                android:layout_height="match_parent"
 29+                app:defaultNavHost="true"
 30+                app:navGraph="@navigation/navigation" />
+
+
+TitleFragment.kt
+
+16+        binding.playButton.setOnClickListener (
+17+                Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment))
+9+import androidx.navigation.Navigation
