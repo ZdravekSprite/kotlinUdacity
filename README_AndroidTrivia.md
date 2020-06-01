@@ -34,3 +34,16 @@ activity_main.xml
 28+                android:layout_height="match_parent" />
 
 -- 02 Let’s Navigate Already
+
+build.gradle (Project)
+
+//25-        version_navigation = "1.0.0"
+//25+        version_navigation = "2.3.0"
+
+
+app/build.gradle
+
+60+
+61+    // Navigation
+62+    implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
+63+    implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
