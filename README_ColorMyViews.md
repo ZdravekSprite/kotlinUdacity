@@ -318,3 +318,9 @@ activity_main.xml
 146+
 131+        app:layout_constraintEnd_toStartOf="@+id/green_button"
 
+colors.xml
+
+6+    <color name="my_green">#12C700</color>
+7+    <color name="my_red">#E54304</color>
+8+    <color name="my_yellow">#FFC107</color>
+
