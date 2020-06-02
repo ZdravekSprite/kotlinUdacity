@@ -317,3 +317,8 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 40+                "NumCorrect: ${args.numCorrect}, NumQuestions: ${args.numQuestions}",
 41+                Toast.LENGTH_LONG).show()
 23+import android.widget.Toast
+
+app/src/main/java/com/example/android/navigation/GameOverFragment.kt
+
+35-            view.findNavController().navigate(R.id.action_gameOverFragment_to_gameFragment)
+35+            view.findNavController().navigate(GameOverFragmentDirections.actionGameOverFragmentToGameFragment())
