@@ -514,3 +514,16 @@ app/src/main/res/navigation/navigation.xml
 35+            app:exitAnim="@anim/slide_out_right"
 36+            app:popEnterAnim="@anim/slide_in_right"
 37+            app:popExitAnim="@anim/slide_out_left"
+
+46-        <action
+47-            android:id="@+id/action_gameWonFragment_to_gameFragment"
+48-            app:destination="@id/gameFragment"
+49-            app:popUpTo="@+id/titleFragment"/>
+52+        <action
+53+            android:id="@+id/action_gameWonFragment_to_gameFragment"
+54+            app:destination="@id/gameFragment"
+55+            app:enterAnim="@anim/slide_in_right"
+56+            app:exitAnim="@anim/slide_out_left"
+57+            app:popEnterAnim="@anim/slide_in_left"
+58+            app:popExitAnim="@anim/slide_out_right"
+59+            app:popUpTo="@+id/titleFragment"/>
