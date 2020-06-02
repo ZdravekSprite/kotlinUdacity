@@ -254,3 +254,10 @@ app/src/main/res/menu/overflow_menu.xml
 app/src/main/java/com/example/android/navigation/TitleFragment.kt 
 
 19+        setHasOptionsMenu(true)
+
+22+
+23+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+24+        super.onCreateOptionsMenu(menu, inflater)
+25+        inflater?.inflate(R.menu.overflow_menu, menu)
+26+    }
+4+import android.view.*
