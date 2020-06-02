@@ -485,3 +485,17 @@ app/src/main/res/anim/fade_in.xml
         android:fromAlpha="0.0"
         android:toAlpha="1.0" />
 </set>
+
+
+app/src/main/res/anim/slide_in_left.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <translate
+        android:duration="@android:integer/config_shortAnimTime"
+        android:fromXDelta="-100%"
+        android:fromYDelta="0%"
+        android:toXDelta="0%"
+        android:toYDelta="0%" />
+</set>
