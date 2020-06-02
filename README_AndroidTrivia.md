@@ -350,3 +350,15 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 42-                Toast.LENGTH_LONG).show()
 23-import android.widget.Toast
 38+        setHasOptionsMenu(true)
+
+41+
+42+    private fun getShareIntent() : Intent {
+43+        val args = GameWonFragmentArgs.fromBundle(arguments!!)
+44+        return ShareCompat.IntentBuilder.from(activity)
+45+                .setText(getString(R.string.share_success_text, args.numCorrect, args.numQuestions))
+46+                .setType("text/plain")
+47+                .intent
+48+    }
+19+import android.content.Intent
+24+import androidx.core.app.ShareCompat
+
