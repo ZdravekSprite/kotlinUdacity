@@ -466,3 +466,9 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 39+        }
 23+import androidx.navigation.NavController
 24+import androidx.navigation.NavDestination
+
+41+            if (nd.id == nc.graph.startDestination) {
+42+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+43+            } else {
+44+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+45+            }
