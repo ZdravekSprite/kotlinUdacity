@@ -48,4 +48,8 @@ class GameWonFragment : Fragment() {
                 .setType("text/plain")
                 .intent
     }
+
+    private fun shareSuccess() {
+        startActivity(getShareIntent())
+    }
 }

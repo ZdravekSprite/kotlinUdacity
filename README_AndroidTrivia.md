@@ -362,3 +362,7 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 19+import android.content.Intent
 24+import androidx.core.app.ShareCompat
 
+51+
+52+    private fun shareSuccess() {
+53+        startActivity(getShareIntent())
+54+    }
