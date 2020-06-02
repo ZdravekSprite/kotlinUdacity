@@ -134,3 +134,6 @@ app/src/main/res/navigation/navigation.xml
 app/src/main/java/com/example/android/navigation/GameFragment.kt
 
 100+                        view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+
+
+-- 04 Back Stack Manipulation
