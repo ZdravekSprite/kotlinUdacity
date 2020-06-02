@@ -382,3 +382,10 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 23-import android.view.ViewGroup
 21+import android.view.*
 
+63+
+64+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+65+        when (item!!.itemId) {
+66+            R.id.share -> shareSuccess()
+67+        }
+68+        return super.onOptionsItemSelected(item)
+69+    }
