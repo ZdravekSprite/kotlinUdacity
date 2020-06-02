@@ -338,3 +338,6 @@ app/src/main/java/com/example/android/navigation/TitleFragment.kt
 17+        binding.playButton.setOnClickListener { v: View ->
 18+            v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
 19+        }
+
+
+-- 08 Adding Sharing with an Intent
