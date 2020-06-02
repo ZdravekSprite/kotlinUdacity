@@ -292,3 +292,10 @@ app/src/main/java/com/example/android/navigation/GameFragment.kt
 
 104-                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
 104+                    view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
+
+
+app/src/main/res/navigation/navigation.xml
+
+42+        <argument
+43+            android:name="numQuestions"
+44+            app:argType="integer" />
