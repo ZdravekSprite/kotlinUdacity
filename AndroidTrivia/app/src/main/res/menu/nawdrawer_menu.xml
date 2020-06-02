@@ -8,4 +8,4 @@
         android:id="@+id/aboutFragment"
         android:icon="@drawable/android"
         android:title="@string/about" />
-</menu> 
+</menu>

@@ -414,4 +414,15 @@ app/src/main/res/menu/navdrawer_menu.xml
         android:id="@+id/aboutFragment"
         android:icon="@drawable/android"
         android:title="@string/about" />
-</menu> 
+</menu>
+
+
+app/src/main/res/layout/activity_main.xml
+
+20+    <androidx.drawerlayout.widget.DrawerLayout
+21+        android:id="@+id/drawerLayout"
+22+        android:layout_width="match_parent"
+23+        android:layout_height="match_parent">
+24+        
+37+    </androidx.drawerlayout.widget.DrawerLayout>
+
