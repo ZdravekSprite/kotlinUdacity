@@ -217,3 +217,6 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 
 29+        val navController = this.findNavController(R.id.myNavHostFragment)
 22+import androidx.navigation.findNavController
+
+31+        NavigationUI.setupActionBarWithNavController(this, navController)
+23+import androidx.navigation.ui.NavigationUI
