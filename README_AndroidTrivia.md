@@ -299,3 +299,7 @@ app/src/main/res/navigation/navigation.xml
 42+        <argument
 43+            android:name="numQuestions"
 44+            app:argType="integer" />
+
+45+        <argument
+46+            android:name="numCorrect"
+47+            app:argType="integer" />
