@@ -212,3 +212,8 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 
 
 -- 05 Adding Support for the Up Button
+
+app/src/main/java/com/example/android/navigation/MainActivity.kt
+
+29+        val navController = this.findNavController(R.id.myNavHostFragment)
+22+import androidx.navigation.findNavController
