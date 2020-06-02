@@ -237,3 +237,15 @@ app/src/main/res/navigation/navigation.xml
 55+        android:name="com.example.android.navigation.AboutFragment"
 56+        android:label="@string/title_about_trivia"
 57+        tools:layout="@layout/fragment_about" />
+
+
+app/src/main/res/menu/overflow_menu.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/aboutFragment"
+        android:title="@string/about" />
+</menu>
