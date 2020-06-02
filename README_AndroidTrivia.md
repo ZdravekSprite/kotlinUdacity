@@ -283,3 +283,9 @@ app/build.gradle
 
 23+ apply plugin: 'androidx.navigation.safeargs'
 24+
+
+
+app/src/main/java/com/example/android/navigation/GameFragment.kt
+
+100-                        view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+100+                        view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment())
