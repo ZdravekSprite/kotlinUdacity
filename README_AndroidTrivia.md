@@ -93,3 +93,6 @@ TitleFragment.kt
 16+        binding.playButton.setOnClickListener (
 17+                Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment))
 9+import androidx.navigation.Navigation
+
+
+-- 03 Conditional Navigation
