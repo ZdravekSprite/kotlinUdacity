@@ -261,3 +261,12 @@ app/src/main/java/com/example/android/navigation/TitleFragment.kt
 25+        inflater?.inflate(R.menu.overflow_menu, menu)
 26+    }
 4+import android.view.*
+
+25+
+26+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+27+        return NavigationUI.onNavDestinationSelected(item!!,
+28+                view!!.findNavController())
+29+                || super.onOptionsItemSelected(item)
+30+    }
+8+import androidx.navigation.findNavController
+9+import androidx.navigation.ui.NavigationUI
