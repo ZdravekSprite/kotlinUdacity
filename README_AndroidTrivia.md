@@ -472,3 +472,6 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 43+            } else {
 44+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 45+            }
+
+
+-- 11 Animation with Navigation
