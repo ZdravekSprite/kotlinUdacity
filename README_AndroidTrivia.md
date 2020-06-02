@@ -174,7 +174,12 @@ app/src/main/java/com/example/android/navigation/GameFragment.kt
 
 app/src/main/res/navigation/navigation.xml
 
-24-           app:destination="@id/gameOverFragment" />
+24-            app:destination="@id/gameOverFragment" />
 24+            app:destination="@id/gameOverFragment"
 25+            app:popUpTo="@+id/gameFragment"
 26+            app:popUpToInclusive="true" />
+
+29-            app:destination="@id/gameWonFragment" />
+29+            app:destination="@id/gameWonFragment"
+30+            app:popUpTo="@+id/gameFragment"
+31+            app:popUpToInclusive="true" />
