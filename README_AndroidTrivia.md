@@ -183,3 +183,8 @@ app/src/main/res/navigation/navigation.xml
 29+            app:destination="@id/gameWonFragment"
 30+            app:popUpTo="@+id/gameFragment"
 31+            app:popUpToInclusive="true" />
+
+44+        <action
+45+            android:id="@+id/action_gameOverFragment_to_gameFragment"
+46+            app:destination="@id/gameFragment"
+47+            app:popUpTo="@+id/titleFragment" />
