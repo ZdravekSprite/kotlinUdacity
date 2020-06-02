@@ -400,3 +400,18 @@ app/src/main/res/navigation/navigation.xml
 61+        android:name="com.example.android.navigation.RulesFragment"
 62+        android:label="@string/title_trivia_rules"
 63+        tools:layout="@layout/fragment_rules" />
+
+
+app/src/main/res/menu/navdrawer_menu.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/rulesFragment"
+        android:icon="@drawable/rules"
+        android:title="@string/rules" />
+    <item
+        android:id="@+id/aboutFragment"
+        android:icon="@drawable/android"
+        android:title="@string/about" />
+</menu> 
