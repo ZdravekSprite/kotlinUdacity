@@ -303,3 +303,8 @@ app/src/main/res/navigation/navigation.xml
 45+        <argument
 46+            android:name="numCorrect"
 47+            app:argType="integer" />
+
+app/src/main/java/com/example/android/navigation/GameFragment.kt 
+
+100-                        view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment())
+100+                        view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(numQuestions,questionIndex))
