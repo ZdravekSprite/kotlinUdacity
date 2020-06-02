@@ -499,3 +499,13 @@ app/src/main/res/anim/slide_in_left.xml
         android:toXDelta="0%"
         android:toYDelta="0%" />
 </set>
+
+
+app/src/main/res/navigation/navigation.xml
+
+15-            app:destination="@id/gameFragment" />
+15+            app:destination="@id/gameFragment"
+16+            app:enterAnim="@anim/slide_in_right"
+17+            app:exitAnim="@anim/slide_out_left"
+18+            app:popEnterAnim="@anim/slide_in_left"
+19+            app:popExitAnim="@anim/slide_out_right" />
