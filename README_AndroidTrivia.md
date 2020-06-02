@@ -443,3 +443,6 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 28+    private lateinit var appBarConfiguration : AppBarConfiguration
 22+import androidx.drawerlayout.widget.DrawerLayout
 24+import androidx.navigation.ui.AppBarConfiguration
+
+33-        @Suppress("UNUSED_VARIABLE")
+34+        drawerLayout = binding.drawerLayout
