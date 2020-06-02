@@ -308,3 +308,12 @@ app/src/main/java/com/example/android/navigation/GameFragment.kt
 
 100-                        view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment())
 100+                        view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(numQuestions,questionIndex))
+
+
+app/src/main/java/com/example/android/navigation/GameWonFragment.kt
+
+38+        var args = GameWonFragmentArgs.fromBundle(arguments!!)
+39+        Toast.makeText(context,
+40+                "NumCorrect: ${args.numCorrect}, NumQuestions: ${args.numQuestions}",
+41+                Toast.LENGTH_LONG).show()
+23+import android.widget.Toast
