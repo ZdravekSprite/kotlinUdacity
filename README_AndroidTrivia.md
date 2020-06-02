@@ -277,3 +277,9 @@ app/src/main/java/com/example/android/navigation/TitleFragment.kt
 build.gradle
 
 34+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
+
+
+app/build.gradle
+
+23+ apply plugin: 'androidx.navigation.safeargs'
+24+
