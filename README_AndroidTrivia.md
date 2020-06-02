@@ -392,3 +392,11 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 
 
 -- 09 Adding the Navigation Drawer
+
+app/src/main/res/navigation/navigation.xml
+
+59+    <fragment
+60+        android:id="@+id/rulesFragment"
+61+        android:name="com.example.android.navigation.RulesFragment"
+62+        android:label="@string/title_trivia_rules"
+63+        tools:layout="@layout/fragment_rules" />
