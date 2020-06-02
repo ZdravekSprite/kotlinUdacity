@@ -459,3 +459,10 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 
 
 -- 10 Using Navigation Listeners
+
+app/src/main/java/com/example/android/navigation/MainActivity.kt
+
+38+        navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, bundle: Bundle? ->
+39+        }
+23+import androidx.navigation.NavController
+24+import androidx.navigation.NavDestination
