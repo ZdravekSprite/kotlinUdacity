@@ -318,12 +318,23 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 41+                Toast.LENGTH_LONG).show()
 23+import android.widget.Toast
 
+
 app/src/main/java/com/example/android/navigation/GameOverFragment.kt
 
 35-            view.findNavController().navigate(R.id.action_gameOverFragment_to_gameFragment)
 35+            view.findNavController().navigate(GameOverFragmentDirections.actionGameOverFragmentToGameFragment())
 
+
 app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 
 37-            view.findNavController().navigate(R.id.action_gameWonFragment_to_gameFragment)
 37+            view.findNavController().navigate(GameWonFragmentDirections.actionGameWonFragmentToGameFragment())
+
+
+app/src/main/java/com/example/android/navigation/TitleFragment.kt
+
+17-        binding.playButton.setOnClickListener (
+18-                Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment))
+17+        binding.playButton.setOnClickListener { v: View ->
+18+            v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
+19+        }
