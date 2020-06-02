@@ -96,3 +96,25 @@ TitleFragment.kt
 
 
 -- 03 Conditional Navigation
+
+app/src/main/res/navigation/navigation.xml
+
+22+        <action
+23+            android:id="@+id/action_gameFragment_to_gameOverFragment"
+24+            app:destination="@id/gameOverFragment" />
+26+    <fragment
+27+        android:id="@+id/gameOverFragment"
+28+        android:name="com.example.android.navigation.GameOverFragment"
+29+        android:label="@string/android_trivia"
+30+        tools:layout="@layout/fragment_game_over">
+31+    </fragment>
+
+app/src/main/java/com/example/android/navigation/GameFragment.kt
+
+78-        binding.submitButton.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+79-        { view: View ->
+78+        binding.submitButton.setOnClickListener { view: View ->
+102+                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+26+import androidx.navigation.findNavController
+
+

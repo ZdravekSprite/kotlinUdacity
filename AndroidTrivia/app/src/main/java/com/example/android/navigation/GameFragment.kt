@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.android.navigation.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
@@ -75,8 +76,7 @@ class GameFragment : Fragment() {
         binding.game = this
 
         // Set the onClickListener for the submitButton
-        binding.submitButton.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
-        { view: View ->
+        binding.submitButton.setOnClickListener { view: View ->
             val checkedId = binding.questionRadioGroup.checkedRadioButtonId
             // Do nothing if nothing is checked (id == -1)
             if (-1 != checkedId) {
@@ -100,6 +100,7 @@ class GameFragment : Fragment() {
                     }
                 } else {
                     // Game over! A wrong answer sends us to the gameOverFragment.
+                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
                 }
             }
         }

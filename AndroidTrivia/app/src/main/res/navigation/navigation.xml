@@ -19,5 +19,14 @@
         android:name="com.example.android.navigation.GameFragment"
         android:label="@string/android_trivia"
         tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameFragment_to_gameOverFragment"
+            app:destination="@id/gameOverFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameOverFragment"
+        android:name="com.example.android.navigation.GameOverFragment"
+        android:label="@string/android_trivia"
+        tools:layout="@layout/fragment_game_over">
     </fragment>
 </navigation>
