@@ -188,3 +188,8 @@ app/src/main/res/navigation/navigation.xml
 45+            android:id="@+id/action_gameOverFragment_to_gameFragment"
 46+            app:destination="@id/gameFragment"
 47+            app:popUpTo="@+id/titleFragment" />
+
+38+        <action
+39+            android:id="@+id/action_gameWonFragment_to_gameFragment"
+40+            app:destination="@id/gameFragment"
+41+            app:popUpTo="@+id/titleFragment"/>
