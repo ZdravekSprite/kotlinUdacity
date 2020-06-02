@@ -435,3 +435,11 @@ app/src/main/res/layout/activity_main.xml
 43+            app:headerLayout="@layout/nav_header"
 44+            app:menu="@menu/navdrawer_menu" />
 45+        
+
+
+app/src/main/java/com/example/android/navigation/MainActivity.kt
+
+27+    private lateinit var drawerLayout: DrawerLayout
+28+    private lateinit var appBarConfiguration : AppBarConfiguration
+22+import androidx.drawerlayout.widget.DrawerLayout
+24+import androidx.navigation.ui.AppBarConfiguration
