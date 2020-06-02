@@ -229,3 +229,11 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 
 
 -- 06 Adding a Menu
+
+app/src/main/res/navigation/navigation.xml
+
+53+    <fragment
+54+        android:id="@+id/aboutFragment"
+55+        android:name="com.example.android.navigation.AboutFragment"
+56+        android:label="@string/title_about_trivia"
+57+        tools:layout="@layout/fragment_about" />
