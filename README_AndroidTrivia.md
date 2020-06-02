@@ -209,3 +209,6 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 35+            view.findNavController().navigate(R.id.action_gameWonFragment_to_gameFragment)
 36+        }
 25+import androidx.navigation.findNavController
+
+
+-- 05 Adding Support for the Up Button
