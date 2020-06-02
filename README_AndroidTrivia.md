@@ -509,3 +509,8 @@ app/src/main/res/navigation/navigation.xml
 17+            app:exitAnim="@anim/slide_out_left"
 18+            app:popEnterAnim="@anim/slide_in_left"
 19+            app:popExitAnim="@anim/slide_out_right" />
+
+34+            app:enterAnim="@anim/slide_in_left"
+35+            app:exitAnim="@anim/slide_out_right"
+36+            app:popEnterAnim="@anim/slide_in_right"
+37+            app:popExitAnim="@anim/slide_out_left"
