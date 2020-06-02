@@ -366,3 +366,19 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 52+    private fun shareSuccess() {
 53+        startActivity(getShareIntent())
 54+    }
+
+55+
+56+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+57+        super.onCreateOptionsMenu(menu, inflater)
+58+        inflater?.inflate(R.menu.winner_menu, menu)
+59+        // check if the activity resolves
+60+        if (null == getShareIntent().resolveActivity(activity!!.packageManager)) {
+61+            // hide the menu item if it doesn't resolve
+62+            menu?.findItem(R.id.share)?.setVisible(false)
+63+        }
+64+    }
+21-import android.view.LayoutInflater
+22-import android.view.View
+23-import android.view.ViewGroup
+21+import android.view.*
+
