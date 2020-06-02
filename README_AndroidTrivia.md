@@ -171,3 +171,10 @@ app/src/main/java/com/example/android/navigation/GameFragment.kt
                             </entry>
                           </map>
                         </option>
+
+app/src/main/res/navigation/navigation.xml
+
+24-           app:destination="@id/gameOverFragment" />
+24+            app:destination="@id/gameOverFragment"
+25+            app:popUpTo="@+id/gameFragment"
+26+            app:popUpToInclusive="true" />
