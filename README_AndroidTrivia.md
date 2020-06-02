@@ -532,3 +532,8 @@ app/src/main/res/navigation/navigation.xml
 70+            app:exitAnim="@anim/slide_out_right"
 71+            app:popEnterAnim="@anim/slide_in_left"
 72+            app:popExitAnim="@anim/slide_out_right"
+
+29+            app:enterAnim="@anim/fade_in"
+30+            app:exitAnim="@anim/fade_out"
+31+            app:popEnterAnim="@anim/slide_in_left"
+32+            app:popExitAnim="@anim/slide_out_right"
