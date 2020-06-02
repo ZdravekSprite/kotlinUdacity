@@ -446,3 +446,6 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 
 33-        @Suppress("UNUSED_VARIABLE")
 34+        drawerLayout = binding.drawerLayout
+
+36-        NavigationUI.setupActionBarWithNavController(this, navController)
+36+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
