@@ -289,3 +289,6 @@ app/src/main/java/com/example/android/navigation/GameFragment.kt
 
 100-                        view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
 100+                        view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment())
+
+104-                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+104+                    view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
