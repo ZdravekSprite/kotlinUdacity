@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = binding.drawerLayout
         val navController = this.findNavController(R.id.myNavHostFragment)
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
     }
 
     override fun onSupportNavigateUp(): Boolean {
