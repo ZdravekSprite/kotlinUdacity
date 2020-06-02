@@ -426,3 +426,12 @@ app/src/main/res/layout/activity_main.xml
 24+        
 37+    </androidx.drawerlayout.widget.DrawerLayout>
 
+37+
+38+        <com.google.android.material.navigation.NavigationView
+39+            android:id="@+id/navView"
+40+            android:layout_width="wrap_content"
+41+            android:layout_height="match_parent"
+42+            android:layout_gravity="start"
+43+            app:headerLayout="@layout/nav_header"
+44+            app:menu="@menu/navdrawer_menu" />
+45+        
