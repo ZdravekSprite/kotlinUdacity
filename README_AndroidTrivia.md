@@ -527,3 +527,8 @@ app/src/main/res/navigation/navigation.xml
 57+            app:popEnterAnim="@anim/slide_in_left"
 58+            app:popExitAnim="@anim/slide_out_right"
 59+            app:popUpTo="@+id/titleFragment"/>
+
+69+            app:enterAnim="@anim/slide_in_left"
+70+            app:exitAnim="@anim/slide_out_right"
+71+            app:popEnterAnim="@anim/slide_in_left"
+72+            app:popExitAnim="@anim/slide_out_right"
