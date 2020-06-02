@@ -220,3 +220,12 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 
 31+        NavigationUI.setupActionBarWithNavController(this, navController)
 23+import androidx.navigation.ui.NavigationUI
+
+34+
+35+    override fun onSupportNavigateUp(): Boolean {
+36+        val navController = this.findNavController(R.id.myNavHostFragment)
+37+        return navController.navigateUp()
+38+    }
+
+
+-- 06 Adding a Menu
