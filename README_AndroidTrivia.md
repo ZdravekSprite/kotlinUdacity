@@ -475,3 +475,13 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 
 
 -- 11 Animation with Navigation
+
+app/src/main/res/anim/fade_in.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha
+        android:duration="@android:integer/config_mediumAnimTime"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0" />
+</set>
