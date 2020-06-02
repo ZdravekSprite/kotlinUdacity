@@ -193,3 +193,11 @@ app/src/main/res/navigation/navigation.xml
 39+            android:id="@+id/action_gameWonFragment_to_gameFragment"
 40+            app:destination="@id/gameFragment"
 41+            app:popUpTo="@+id/titleFragment"/>
+
+
+app/src/main/java/com/example/android/navigation/GameOverFragment.kt
+
+33+        binding.tryAgainButton.setOnClickListener { view: View ->
+34+            view.findNavController().navigate(R.id.action_gameOverFragment_to_gameFragment)
+35+        }
+25+import androidx.navigation.findNavController
