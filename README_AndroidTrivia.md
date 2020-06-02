@@ -249,3 +249,8 @@ app/src/main/res/menu/overflow_menu.xml
         android:id="@+id/aboutFragment"
         android:title="@string/about" />
 </menu>
+
+
+app/src/main/java/com/example/android/navigation/TitleFragment.kt 
+
+19+        setHasOptionsMenu(true)
