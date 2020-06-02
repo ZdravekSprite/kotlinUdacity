@@ -118,3 +118,19 @@ app/src/main/java/com/example/android/navigation/GameFragment.kt
 26+import androidx.navigation.findNavController
 
 
+app/src/main/res/navigation/navigation.xml
+
+25+        <action
+26+            android:id="@+id/action_gameFragment_to_gameWonFragment"
+27+            app:destination="@id/gameWonFragment" />
+29+    <fragment
+30+        android:id="@+id/gameWonFragment"
+31+        android:name="com.example.android.navigation.GameWonFragment"
+32+        android:label="@string/android_trivia"
+33+        tools:layout="@layout/fragment_game_won">
+34+    </fragment>
+
+
+app/src/main/java/com/example/android/navigation/GameFragment.kt
+
+100+                        view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
