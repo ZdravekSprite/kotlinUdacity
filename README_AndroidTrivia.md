@@ -201,3 +201,11 @@ app/src/main/java/com/example/android/navigation/GameOverFragment.kt
 34+            view.findNavController().navigate(R.id.action_gameOverFragment_to_gameFragment)
 35+        }
 25+import androidx.navigation.findNavController
+
+
+app/src/main/java/com/example/android/navigation/GameWonFragment.kt
+
+34+        binding.nextMatchButton.setOnClickListener { view: View ->
+35+            view.findNavController().navigate(R.id.action_gameWonFragment_to_gameFragment)
+36+        }
+25+import androidx.navigation.findNavController
