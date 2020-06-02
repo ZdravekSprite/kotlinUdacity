@@ -451,3 +451,5 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 36+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
 
 37+        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
+
+38+        NavigationUI.setupWithNavController(binding.navView, navController)
