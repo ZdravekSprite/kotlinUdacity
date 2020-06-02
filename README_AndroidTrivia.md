@@ -341,3 +341,12 @@ app/src/main/java/com/example/android/navigation/TitleFragment.kt
 
 
 -- 08 Adding Sharing with an Intent
+
+app/src/main/java/com/example/android/navigation/GameWonFragment.kt
+
+39-        var args = GameWonFragmentArgs.fromBundle(arguments!!)
+40-        Toast.makeText(context,
+41-                "NumCorrect: ${args.numCorrect}, NumQuestions: ${args.numQuestions}",
+42-                Toast.LENGTH_LONG).show()
+23-import android.widget.Toast
+38+        setHasOptionsMenu(true)
