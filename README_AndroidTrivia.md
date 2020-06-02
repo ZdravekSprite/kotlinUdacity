@@ -453,3 +453,6 @@ app/src/main/java/com/example/android/navigation/MainActivity.kt
 37+        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
 
 38+        NavigationUI.setupWithNavController(binding.navView, navController)
+
+43-        return navController.navigateUp()
+43+        return NavigationUI.navigateUp(navController, appBarConfiguration)
