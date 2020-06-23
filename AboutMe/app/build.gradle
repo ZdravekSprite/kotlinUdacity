@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 30
+    buildToolsVersion '30.0.0'
 
     defaultConfig {
         applicationId "com.example.android.aboutme"
@@ -21,9 +21,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+/*  obsolete
     dataBinding {
         enabled = true
+    }
+*/
+    buildFeatures{
+        dataBinding = true
     }
 }
 
