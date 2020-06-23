@@ -178,3 +178,37 @@ class DessertTimer {
 161+        dessertTimer.startTimer()
 177+        dessertTimer.stopTimer()
 ```
+
+-- 04 Lifecycle Observation
+
+> - DessertPusher/app/src/main/java/com/example/android/dessertpusher/DessertTimer.kt
+
+```kt
+37-class DessertTimer {
+37+class DessertTimer(lifecycle: Lifecycle) : LifecycleObserver {
+20-21+
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+51-55+
+    init {
+        // Add this as a lifecycle Observer, which allows for the class to react to changes in this
+        // activity's lifecycle state
+        lifecycle.addObserver(this)
+    }
+57+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+22+import androidx.lifecycle.OnLifecycleEvent
+77+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+```
+
+> - DessertPusher/app/src/main/java/com/example/android/dessertpusher/MainActivity.kt
+
+```kt
+78-79-
+        // Setup dessertTimer
+        dessertTimer = DessertTimer()
+78-79+
+        // Setup dessertTimer, passing in the lifecycle
+        dessertTimer = DessertTimer(this.lifecycle)
+161-        dessertTimer.startTimer()
+176-        dessertTimer.stopTimer()
+```
