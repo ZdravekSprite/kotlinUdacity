@@ -253,6 +253,13 @@ app/build.gradle
 26+        enabled = true
 27+    }
 
+> - update
+
+```
+    buildFeatures{ 
+        dataBinding = true 
+    }
+```
 
 activity_main.xml
 

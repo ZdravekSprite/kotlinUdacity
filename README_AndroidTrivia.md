@@ -74,7 +74,7 @@ navigation.xml
     </fragment>
 </navigation>
 
-yctivity_main.xml
+activity_main.xml
 
 25-                android:id="@+id/titleFragment"
 26-                android:name="com.example.android.navigation.TitleFragment"
@@ -262,6 +262,11 @@ app/src/main/java/com/example/android/navigation/TitleFragment.kt
 26+    }
 4+import android.view.*
 
+```
+24-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+24+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+```
+
 25+
 26+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 27+        return NavigationUI.onNavDestinationSelected(item!!,
@@ -271,6 +276,10 @@ app/src/main/java/com/example/android/navigation/TitleFragment.kt
 8+import androidx.navigation.findNavController
 9+import androidx.navigation.ui.NavigationUI
 
+```
+28-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+28+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+```
 
 -- 07 Adding Safe Arguments
 
@@ -362,6 +371,10 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 19+import android.content.Intent
 24+import androidx.core.app.ShareCompat
 
+```
+44-        return ShareCompat.IntentBuilder.from(activity)
+44+        return ShareCompat.IntentBuilder.from(activity!!)
+```
 51+
 52+    private fun shareSuccess() {
 53+        startActivity(getShareIntent())
@@ -382,6 +395,15 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 23-import android.view.ViewGroup
 21+import android.view.*
 
+```
+54-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+54+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+56-        inflater?.inflate(R.menu.winner_menu, menu)
+56+        inflater.inflate(R.menu.winner_menu, menu)
+60-            menu?.findItem(R.id.share)?.setVisible(false)
+60+            menu.findItem(R.id.share)?.setVisible(false)
+```
+
 63+
 64+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 65+        when (item!!.itemId) {
@@ -390,6 +412,14 @@ app/src/main/java/com/example/android/navigation/GameWonFragment.kt
 68+        return super.onOptionsItemSelected(item)
 69+    }
 
+```
+64-65-
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+64-65+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+```
 
 -- 09 Adding the Navigation Drawer
 
