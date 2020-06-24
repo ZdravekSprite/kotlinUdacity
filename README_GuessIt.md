@@ -241,3 +241,60 @@ class GameViewModel : ViewModel() {
         nextWord()
 3-import android.util.Log
 ```
+
+-- 03 Add LiveData to GameViewModel
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameViewModel.kt
+
+```kt
+11-    var word = ""
+11+    val word = MutableLiveData<String>()
+3+import androidx.lifecycle.MutableLiveData
+63-            word = wordList.removeAt(0)
+63+            word.value = wordList.removeAt(0)
+15-    var score = 0
+15+    val score = MutableLiveData<Int>()
+70-        score--
+70+        score.value = (score.value)?.minus(1)
+75-        score++
+75+        score.value = (score.value)?.plus(1)
+23+        score.value = 0
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameFragment.kt
+
+```kt
+65-73+
+        /** Setting up LiveData observation relationship **/
+        viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
+            binding.wordText.text = newWord
+        })
+
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
+            binding.scoreText.text = newScore.toString()
+        })
+
+25+import androidx.lifecycle.Observer
+86-95-
+
+    /** Methods for updating the UI **/
+
+    private fun updateWordText() {
+        binding.wordText.text = viewModel.word
+    }
+
+    private fun updateScoreText() {
+        binding.scoreText.text = viewModel.score.toString()
+    }
+56-57-
+61-62-
+            updateScoreText()
+            updateWordText()
+60-61-
+        updateScoreText()
+        updateWordText()
+77-        val action = GameFragmentDirections.actionGameToScore(viewModel.score)
+77-78+
+        val currentScore = viewModel.score.value ?: 0
+        val action = GameFragmentDirections.actionGameToScore(currentScore)
+```
