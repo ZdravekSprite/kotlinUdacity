@@ -441,3 +441,108 @@ class GameViewModel : ViewModel() {
 
 20+import android.text.format.DateUtils
 ```
+
+-- 07 Add a ViewModelFactory
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/score/ScoreViewModel.kt
+
+```kt
+package com.example.android.guesstheword.screens.score
+
+import androidx.lifecycle.ViewModel
+
+/**
+ * ViewModel for the final screen showing the score
+ */
+class ScoreViewModel(finalScore: Int) : ViewModel() {
+
+    init {
+    }
+}
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/score/ScoreViewModelFactory.kt
+
+```kt
+package com.example.android.guesstheword.screens.score
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+
+class ScoreViewModelFactory(private val finalScore: Int) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(ScoreViewModel::class.java)) {
+            return ScoreViewModel(finalScore) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/score/ScoreFragment.kt
+
+```kt
+35-37+
+    private lateinit var viewModel: ScoreViewModel
+    private lateinit var viewModelFactory: ScoreViewModelFactory
+
+54-58+
+
+        viewModelFactory = ScoreViewModelFactory(scoreFragmentArgs.score)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(ScoreViewModel::class.java)
+
+25+import androidx.lifecycle.ViewModelProviders
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/score/ScoreViewModel.kt
+
+```kt
+10-17+
+    private val _eventPlayAgain = MutableLiveData<Boolean>()
+    val eventPlayAgain: LiveData<Boolean>
+        get() = _eventPlayAgain
+
+    private val _score = MutableLiveData<Int>()
+    val score: LiveData<Int>
+        get() = _score
+
+3-4+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+21+        _score.value = finalScore
+23-30+
+
+    fun onPlayAgain() {
+        _eventPlayAgain.value = true
+    }
+
+    fun onPlayAgainComplete() {
+        _eventPlayAgain.value = false
+    }
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/score/ScoreFragment.kt
+
+```kt
+60-64+
+        // Add observer for score
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
+            binding.scoreText.text = newScore.toString()
+        })
+
+25+import androidx.lifecycle.Observer
+66-67-
+        binding.scoreText.text = scoreFragmentArgs.score.toString()
+        binding.playAgainButton.setOnClickListener { onPlayAgain() }
+66+        binding.playAgainButton.setOnClickListener { viewModel.onPlayAgain() }
+68-75+
+        // Navigates back to title when button is pressed
+        viewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
+            if (playAgain) {
+                findNavController().navigate(ScoreFragmentDirections.actionRestart())
+                viewModel.onPlayAgainComplete()
+            }
+        })
+
+```
