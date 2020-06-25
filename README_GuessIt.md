@@ -352,7 +352,7 @@ class GameViewModel : ViewModel() {
 ```kt
 69-78+
         // Sets up event listening to navigate the player when the game is finished
-        viewModel.eventGameFinish.observe(this, Observer { isFinished ->
+        viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer { isFinished ->
             if (isFinished) {
                 val currentScore = viewModel.score.value ?: 0
                 val action = GameFragmentDirections.actionGameToScore(currentScore)
@@ -370,4 +370,74 @@ class GameViewModel : ViewModel() {
         val action = GameFragmentDirections.actionGameToScore(currentScore)
         findNavController(this).navigate(action)
     }
+```
+
+-- 06 Add CountDownTimer
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameViewModel.kt
+
+```kt
+12-18+
+    companion object {
+        // These represent different important times in the game, such as game length.
+
+    }
+
+    private val timer: CountDownTimer
+
+3+import android.os.CountDownTimer
+20-23+
+    private val _currentTime = MutableLiveData<Long>()
+    val currentTime: LiveData<Long>
+        get() = _currentTime
+
+14-18+
+        // This is when the game is over
+        private const val DONE = 0L
+        
+19-24+
+        // This is the number of milliseconds in a second
+        private const val ONE_SECOND = 1000L
+
+        // This is the total time of the game
+        private const val COUNTDOWN_TIME = 60000L
+
+56-69+
+        // Creates a timer which triggers the end of the game when it finishes
+        timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                _currentTime.value = (millisUntilFinished / ONE_SECOND)
+            }
+
+            override fun onFinish() {
+                _currentTime.value = DONE
+                _eventGameFinish.value = true
+            }
+        }
+
+        timer.start()
+108-110-
+            _eventGameFinish.value = true
+        } else {
+            _word.value = wordList.removeAt(0)
+108+            resetList()
+110+        _word.value = wordList.removeAt(0)
+131-134+
+    override fun onCleared() {
+        super.onCleared()
+        timer.cancel()
+    }
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameFragment.kt
+
+```kt
+69-73+
+        viewModel.currentTime.observe(viewLifecycleOwner, Observer { newTime ->
+            binding.timerText.text = DateUtils.formatElapsedTime(newTime)
+
+        })
+
+20+import android.text.format.DateUtils
 ```
