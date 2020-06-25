@@ -298,3 +298,29 @@ class GameViewModel : ViewModel() {
         val currentScore = viewModel.score.value ?: 0
         val action = GameFragmentDirections.actionGameToScore(currentScore)
 ```
+
+-- 04 Add LiveData Encapsulation to GameViewModel
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameViewModel.kt
+
+```kt
+12-    val word = MutableLiveData<String>()
+12-14+
+    private val _word = MutableLiveData<String>()
+    val word: LiveData<String>
+        get() = _word
+3+import androidx.lifecycle.LiveData
+67-            word.value = wordList.removeAt(0)
+67+            _word.value = wordList.removeAt(0)
+18-    val score = MutableLiveData<Int>()
+18-20+
+    private val _score = MutableLiveData<Int>()
+    val score: LiveData<Int>
+        get() = _score
+28-        score.value = 0
+28+        _score.value = 0
+76-        score.value = (score.value)?.minus(1)
+76+        _score.value = (_score.value)?.minus(1)
+81-        score.value = (score.value)?.plus(1)
+81+        _score.value = (_score.value)?.plus(1)
+```
