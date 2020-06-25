@@ -324,3 +324,50 @@ class GameViewModel : ViewModel() {
 81-        score.value = (score.value)?.plus(1)
 81+        _score.value = (_score.value)?.plus(1)
 ```
+
+-- 05 Add End Game Event
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameViewModel.kt
+
+```kt
+25-29+
+    // Event which triggers the end of the game
+    private val _eventGameFinish = MutableLiveData<Boolean>()
+    val eventGameFinish: LiveData<Boolean>
+        get() = _eventGameFinish
+
+90-95+
+    /** Methods for completed events **/
+
+    fun onGameFinishComplete() {
+        _eventGameFinish.value = false
+    }
+
+72-            // gameFinished()
+72+            _eventGameFinish.value = true
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameFragment.kt
+
+```kt
+69-78+
+        // Sets up event listening to navigate the player when the game is finished
+        viewModel.eventGameFinish.observe(this, Observer { isFinished ->
+            if (isFinished) {
+                val currentScore = viewModel.score.value ?: 0
+                val action = GameFragmentDirections.actionGameToScore(currentScore)
+                findNavController(this).navigate(action)
+                viewModel.onGameFinishComplete()
+            }
+        })
+
+83-90-
+    /**
+     * Called when the game is finished
+     */
+    fun gameFinished() {
+        val currentScore = viewModel.score.value ?: 0
+        val action = GameFragmentDirections.actionGameToScore(currentScore)
+        findNavController(this).navigate(action)
+    }
+```
