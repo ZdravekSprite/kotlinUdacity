@@ -546,3 +546,60 @@ import androidx.lifecycle.MutableLiveData
         })
 
 ```
+
+-- 08 Add ViewModel to Data Binding
+
+> - GuessIt/app/src/main/res/layout/game_fragment.xml
+
+```xml
+21-26+
+    <data>
+        <variable
+            name="gameViewModel"
+            type="com.example.android.guesstheword.screens.game.GameViewModel" />
+    </data>
+
+104+            android:onClick="@{() -> gameViewModel.onSkip()}"
+126+            android:onClick="@{() -> gameViewModel.onCorrect()}"
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameFragment.kt
+
+```kt
+55-60-
+        binding.correctButton.setOnClickListener {
+            viewModel.onCorrect()
+        }
+        binding.skipButton.setOnClickListener {
+            viewModel.onSkip()
+        }
+55-58+
+        // Set the viewmodel for databinding - this allows the bound layout access to all of the
+        // data in the VieWModel
+        binding.gameViewModel = viewModel
+
+```
+
+> - GuessIt/app/src/main/res/layout/score_fragment.xml
+
+```xml
+21-26+
+    <data>
+        <variable
+            name="scoreViewModel"
+            type="com.example.android.guesstheword.screens.score.ScoreViewModel" />
+    </data>
+
+73+            android:onClick="@{() -> scoreViewModel.onPlayAgain()}"
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/score/ScoreFragment.kt
+
+```kt
+61-62+
+        binding.scoreViewModel = viewModel
+
+68-69-
+        binding.playAgainButton.setOnClickListener { viewModel.onPlayAgain() }
+
+```
