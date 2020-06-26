@@ -603,3 +603,51 @@ import androidx.lifecycle.MutableLiveData
         binding.playAgainButton.setOnClickListener { viewModel.onPlayAgain() }
 
 ```
+
+-- 09 Add LiveData Data Binding
+
+> - GuessIt/app/src/main/res/layout/game_fragment.xml
+
+```xml
+57+            android:text="@{@string/quote_format(gameViewModel.word)}"
+92+            android:text="@{@string/score_format(gameViewModel.score)}"
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameFragment.kt
+
+```kt
+59-62+
+        // Specify the current activity as the lifecycle owner of the binding. This is used so that
+        // the binding can observe LiveData updates
+        binding.setLifecycleOwner(this)
+
+64-71-
+        viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
+            binding.wordText.text = newWord
+        })
+
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
+            binding.scoreText.text = newScore.toString()
+        })
+
+```
+
+> - GuessIt/app/src/main/res/layout/score_fragment.xml
+
+```xml
+57+            android:text="@{String.valueOf(scoreViewModel.score)}"
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/score/ScoreFragment.kt
+
+```kt
+63-65+
+        // Specify the current activity as the lifecycle owner of the binding. This is used so that
+        // the binding can observe LiveData updates
+        binding.setLifecycleOwner(this)
+66-69-
+        // Add observer for score
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
+            binding.scoreText.text = newScore.toString()
+        })
+```
