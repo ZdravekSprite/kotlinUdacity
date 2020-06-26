@@ -545,6 +545,11 @@ import androidx.lifecycle.MutableLiveData
             }
         })
 
+77-80-
+
+    private fun onPlayAgain() {
+        findNavController().navigate(ScoreFragmentDirections.actionRestart())
+    }
 ```
 
 -- 08 Add ViewModel to Data Binding
@@ -790,5 +795,21 @@ private val NO_BUZZ_PATTERN = longArrayOf(0)
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+```
+
+-- 12
+
+> - GuessIt/app/build.gradle
+
+```
+39-42-
+
+    dataBinding {
+        enabled = true
+    }
+39-41+
+    buildFeatures{
+        dataBinding = true
     }
 ```
