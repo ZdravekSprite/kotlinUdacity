@@ -651,3 +651,36 @@ import androidx.lifecycle.MutableLiveData
             binding.scoreText.text = newScore.toString()
         })
 ```
+
+-- 10 LiveData Map Transformation
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameViewModel.kt
+
+```kt
+33-37+
+    // The String version of the current time
+    val currentTimeString = Transformations.map(currentTime) { time ->
+        DateUtils.formatElapsedTime(time)
+    }
+
+6+import androidx.lifecycle.Transformations
+4+import android.text.format.DateUtils
+```
+
+> - GuessIt/app/src/main/res/layout/game_fragment.xml
+
+```xml
+77+            android:text="@{gameViewModel.currentTimeString}"
+```
+
+> - GuessIt/app/src/main/java/com/example/android/guesstheword/screens/game/GameFragment.kt
+
+```kt
+63-68-
+        /** Setting up LiveData observation relationship **/
+        viewModel.currentTime.observe(viewLifecycleOwner, Observer { newTime ->
+            binding.timerText.text = DateUtils.formatElapsedTime(newTime)
+
+        })
+
+```
