@@ -259,3 +259,46 @@ class SleepDatabaseTest {
     }
 }
 ```
+
+-- 04 Adding a ViewModel
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+47-50+
+        val application = requireNotNull(this.activity).application
+
+		// Create an instance of the ViewModel Factory.
+        val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
+26+import com.example.android.trackmysleepquality.database.SleepDatabase
+52-57+
+        val viewModelFactory = SleepTrackerViewModelFactory(dataSource, application)
+
+        val sleepTrackerViewModel =
+                ViewModelProviders.of(
+                        this, viewModelFactory).get(SleepTrackerViewModel::class.java)
+
+25+import androidx.lifecycle.ViewModelProviders
+59-60+
+        binding.setLifecycleOwner(this)
+
+```
+
+> - SleepTracker/app/src/main/res/layout/fragment_sleep_tracker.xml
+
+```xml
+26-
+26-28+
+        <variable
+            name="sleepTrackerViewModel"
+            type="com.example.android.trackmysleepquality.sleeptracker.SleepTrackerViewModel" />
+
+```
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+59-60+
+        binding.sleepTrackerViewModel = sleepTrackerViewModel
+
+```
