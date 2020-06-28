@@ -302,3 +302,233 @@ class SleepDatabaseTest {
         binding.sleepTrackerViewModel = sleepTrackerViewModel
 
 ```
+
+-- 05 Coroutines for Long-running Operations
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerViewModel.kt
+
+```kt
+29-33+
+
+    /**
+     * viewModelJob allows us to cancel all coroutines started by this ViewModel.
+     */
+    private var viewModelJob = Job()
+22+import kotlinx.coroutines.Job
+35-46+
+
+    /**
+     * A [CoroutineScope] keeps track of all coroutines started by this ViewModel.
+     *
+     * Because we pass it [viewModelJob], any coroutine started in this uiScope can be cancelled
+     * by calling `viewModelJob.cancel()`
+     *
+     * By default, all coroutines started in uiScope will launch in [Dispatchers.Main] which is
+     * the main thread on Android. This is a sensible default because most coroutines started by
+     * a [ViewModel] update the UI after performing some processing.
+     */
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+22-23+
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+49-50+
+
+    private var tonight = MutableLiveData<SleepNight?>()
+21+import androidx.lifecycle.MutableLiveData
+23+import com.example.android.trackmysleepquality.database.SleepNight
+53-64+
+
+    private val nights = database.getAllNights()
+
+    init {
+        initializeTonight()
+    }
+
+    private fun initializeTonight() {
+        uiScope.launch {
+            tonight.value = getTonightFromDatabase()
+        }
+    }
+27+import kotlinx.coroutines.launch
+66-75+
+
+    /**
+     *  Handling the case of the stopped app or forgotten recording,
+     *  the start and end times will be the same.j
+     *
+     *  If the start time and end time are not the same, then we do not have an unfinished
+     *  recording.
+     */
+    private suspend fun getTonightFromDatabase(): SleepNight? {
+    }
+75-76+
+        return withContext(Dispatchers.IO) {
+        }
+24-27-
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+24+import kotlinx.coroutines.*
+73-77+
+            var night = database.getTonight()
+            if (night?.endTimeMilli != night?.startTimeMilli) {
+                night = null
+            }
+            night
+80-85+
+
+    /**
+     * Executes when the START button is clicked.
+     */
+    fun onStartTracking() {
+    }
+85-86+
+        uiScope.launch {
+        }
+86-92+
+            // Create a new night, which captures the current time,
+            // and insert it into the database.
+            val newNight = SleepNight()
+
+            insert(newNight)
+
+            tonight.value = getTonightFromDatabase()
+81-86+
+    private suspend fun insert(night: SleepNight) {
+        withContext(Dispatchers.IO) {
+            database.insert(night)
+        }
+    }
+
+101-118+
+
+    /**
+     * Executes when the STOP button is clicked.
+     */
+    fun onStopTracking() {
+        uiScope.launch {
+            // In Kotlin, the return@label syntax is used for specifying which function among
+            // several nested ones this statement returns from.
+            // In this case, we are specifying to return from launch(),
+            // not the lambda.
+            val oldNight = tonight.value ?: return@launch
+
+            // Update the night in the database to add the end time.
+            oldNight.endTimeMilli = System.currentTimeMillis()
+
+            update(oldNight)
+        }
+    }
+81-86+
+    private suspend fun update(night: SleepNight) {
+        withContext(Dispatchers.IO) {
+            database.update(night)
+        }
+    }
+
+125-137+
+
+    /**
+     * Executes when the CLEAR button is clicked.
+     */
+    fun onClear() {
+        uiScope.launch {
+            // Clear the database table.
+            clear()
+
+            // And clear tonight since it's no longer in the database
+            tonight.value = null
+        }
+    }
+81-86+
+    private suspend fun clear() {
+        withContext(Dispatchers.IO) {
+            database.clear()
+        }
+    }
+
+144-154+
+
+    /**
+     * Called when the ViewModel is dismantled.
+     * At this point, we want to cancel all coroutines;
+     * otherwise we end up with processes that have nowhere to return to
+     * using memory and resources.
+     */
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+```
+
+> - SleepTracker/app/src/main/res/layout/fragment_sleep_tracker.xml
+
+```xml
+75+            android:onClick="@{() -> sleepTrackerViewModel.onStartTracking()}"
+89+            android:onClick="@{() -> sleepTrackerViewModel.onStopTracking()}"
+103+            android:onClick="@{() -> sleepTrackerViewModel.onClear()}"
+```
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerViewModel.kt
+
+```kt
+54-60+
+    /**
+     * Converted nights to Spanned for displaying.
+     */
+    val nightsString = Transformations.map(nights) { nights ->
+        formatNights(nights, application.resources)
+    }
+
+22+import androidx.lifecycle.Transformations
+24+import com.example.android.trackmysleepquality.formatNights
+```
+
+> - SleepTracker/app/src/main/res/layout/fragment_sleep_tracker.xml
+
+```xml
+61-                android:text="@string/how_was_hour_sleep" />
+61+                android:text="@{sleepTrackerViewModel.nightsString}" />
+```
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/Util.kt
+
+```kt
+72-100/-
+fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
+    val sb = StringBuilder()
+    sb.apply {
+        append(resources.getString(R.string.title))
+        nights.forEach {
+            append("<br>")
+            append(resources.getString(R.string.start_time))
+            append("\t${convertLongToDateString(it.startTimeMilli)}<br>")
+            if (it.endTimeMilli != it.startTimeMilli) {
+                append(resources.getString(R.string.end_time))
+                append("\t${convertLongToDateString(it.endTimeMilli)}<br>")
+                append(resources.getString(R.string.quality))
+                append("\t${convertNumericQualityToString(it.sleepQuality, resources)}<br>")
+                append(resources.getString(R.string.hours_slept))
+                // Hours
+                append("\t ${it.endTimeMilli.minus(it.startTimeMilli) / 1000 / 60 / 60}:")
+                // Minutes
+                append("${it.endTimeMilli.minus(it.startTimeMilli) / 1000 / 60}:")
+                // Seconds
+                append("${it.endTimeMilli.minus(it.startTimeMilli) / 1000}<br><br>")
+            }
+        }
+    }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        return Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+    }
+}
+24-25+
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
+import androidx.core.text.HtmlCompat
+import com.example.android.trackmysleepquality.database.SleepNight
+```
