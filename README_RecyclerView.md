@@ -265,3 +265,30 @@ import com.example.android.trackmysleepquality.convertNumericQualityToString
 
 54+
 ```
+
+-- 06 Refactor onCreateViewHolder
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepNightAdapter.kt
+
+```kt
+46-50-
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view = layoutInflater
+                .inflate(R.layout.list_item_sleep_night, parent, false)
+
+        return ViewHolder(view)
+46+        return ViewHolder.from(parent)
+70-79+
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater
+                        .inflate(R.layout.list_item_sleep_night, parent, false)
+
+                return ViewHolder(view)
+            }
+        }
+49-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+49+    class ViewHolder private constructor (itemView: View) : RecyclerView.ViewHolder(itemView){
+```
