@@ -782,3 +782,97 @@ import com.example.android.trackmysleepquality.database.SleepDatabaseDao
 108+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(4)}"
 121+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(5)}"
 ```
+
+-- 07 Button States and SnackBar
+
+> - SleepTracker/app/src/main/res/layout/fragment_sleep_tracker.xml
+
+```xml
+75+            android:enabled="@{sleepTrackerViewModel.startButtonVisible}"
+90+            android:enabled="@{sleepTrackerViewModel.stopButtonVisible}"
+105+            android:enabled="@{sleepTrackerViewModel.clearButtonVisible}"
+```
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerViewModel.kt
+
+```kt
+64-84+
+    /**
+     * If tonight has not been set, then the START button should be visible.
+     */
+    val startButtonVisible = Transformations.map(tonight) {
+        null == it
+    }
+
+    /**
+     * If tonight has been set, then the STOP button should be visible.
+     */
+    val stopButtonVisible = Transformations.map(tonight) {
+        null != it
+    }
+
+    /**
+     * If there are any nights in the database, show the CLEAR button.
+     */
+    val clearButtonVisible = Transformations.map(nights) {
+        it?.isNotEmpty()
+    }
+
+85-97+
+    /**
+     * Request a toast by setting this value to true.
+     *
+     * This is private because we don't want to expose setting this value to the Fragment.
+     */
+    private var _showSnackbarEvent = MutableLiveData<Boolean>()
+
+    /**
+     * If this is true, immediately `show()` a toast and call `doneShowingSnackbar()`.
+     */
+    val showSnackBarEvent: LiveData<Boolean>
+        get() = _showSnackbarEvent
+
+103-115+
+    /**
+     * Call this immediately after calling `show()` on a toast.
+     *
+     * It will clear the toast request, so if the user rotates their phone it won't show a duplicate
+     * toast.
+     */
+
+    fun doneShowingSnackbar() {
+        _showSnackbarEvent.value = false
+    }
+
+```
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+65-79+
+        // Add an Observer on the state variable for showing a Snackbar message
+        // when the CLEAR button is pressed.
+        sleepTrackerViewModel.showSnackBarEvent.observe(this, Observer {
+            if (it == true) { // Observed state is true.
+                Snackbar.make(
+                        activity!!.findViewById(android.R.id.content),
+                        getString(R.string.cleared_message),
+                        Snackbar.LENGTH_SHORT // How long to display the message.
+                ).show()
+                // Reset state to make sure the snackbar is only shown once, even if the device
+                // has a configuration change.
+                sleepTrackerViewModel.doneShowingSnackbar()
+            }
+        })
+
+31+import com.google.android.material.snackbar.Snackbar
+```
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerViewModel.kt
+
+```kt
+224-226+
+
+        // Show a snackbar message, because it's friendly.
+        _showSnackbarEvent.value = true
+```
