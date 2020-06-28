@@ -346,3 +346,58 @@ class SleepNightAdapter : ListAdapter<SleepNight,
 82-        sleepTrackerViewModel.navigateToSleepQuality.observe(this, Observer { night ->
 82+        sleepTrackerViewModel.navigateToSleepQuality.observe(viewLifecycleOwner, Observer { night ->
 ```
+
+-- 08 Add DataBinding to the Adapter
+
+> - SleepTracker-with-RecyclerView/app/src/main/res/layout/list_item_sleep_night.xml
+
+```xml
+2-4-
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+2-13+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="sleep"
+            type="com.example.android.trackmysleepquality.database.SleepNight" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+54+</layout>
+```
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepNightAdapter.kt
+
+```kt
+70-73-
+                val view = layoutInflater
+                        .inflate(R.layout.list_item_sleep_night, parent, false)
+70+                val binding = ListItemSleepNightBinding.inflate(layoutInflater, parent, false)
+31+import com.example.android.trackmysleepquality.databinding.ListItemSleepNightBinding
+73-                return ViewHolder(view)
+73+                return ViewHolder(binding)
+46-50-
+    class ViewHolder private constructor (itemView: View) : RecyclerView.ViewHolder(itemView){
+
+        val sleepLength: TextView = itemView.findViewById(R.id.sleep_length)
+        val quality: TextView = itemView.findViewById(R.id.quality_string)
+        val qualityImage: ImageView = itemView.findViewById(R.id.quality_image)
+46-47+
+    class ViewHolder private constructor(val binding: ListItemSleepNightBinding)
+        : RecyclerView.ViewHolder(binding.root) {
+52-54-
+            sleepLength.text = convertDurationToFormatted(item.startTimeMilli, item.endTimeMilli, res)
+            quality.text = convertNumericQualityToString(item.sleepQuality, res)
+            qualityImage.setImageResource(when (item.sleepQuality) {
+52-54+
+            binding.sleepLength.text = convertDurationToFormatted(item.startTimeMilli, item.endTimeMilli, res)
+            binding.qualityString.text = convertNumericQualityToString(item.sleepQuality, res)
+            binding.qualityImage.setImageResource(when (item.sleepQuality) {
+```
