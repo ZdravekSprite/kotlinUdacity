@@ -55,7 +55,7 @@ class SleepNightAdapter: RecyclerView.Adapter<TextItemViewHolder>() {
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.trackmysleepquality.TextItemViewHolder
 
-23+    var data =  listOf<SleepNight>()
+23+    var data = listOf<SleepNight>()
 21+import com.example.android.trackmysleepquality.database.SleepNight
 25-35+
 
@@ -70,4 +70,41 @@ import com.example.android.trackmysleepquality.TextItemViewHolder
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 19+import android.view.ViewGroup
+```
+
+-- 02 Display SleepQuality Data
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepNightAdapter.kt
+
+```kt
+35-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+38-39+
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view = layoutInflater
+                .inflate(R.layout.text_item_view, parent, false) as TextView
+
+        return TextItemViewHolder(view)
+19+import android.view.LayoutInflater
+21+import android.widget.TextView
+23+import com.example.android.trackmysleepquality.R
+29-32
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+```
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+100-108+
+        val adapter = SleepNightAdapter()
+        binding.sleepList.adapter = adapter
+
+        sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
+
 ```
