@@ -108,3 +108,19 @@ import com.example.android.trackmysleepquality.TextItemViewHolder
         })
 
 ```
+
+-- 03 Recycling ViewHolders
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepNightAdapter.kt
+
+```kt
+39-45+
+
+        if (item.sleepQuality <= 1) {
+            holder.textView.setTextColor(Color.RED) // red
+        } else {
+            // reset
+            holder.textView.setTextColor(Color.BLACK) // black
+        }
+19+import android.graphics.Color
+```
