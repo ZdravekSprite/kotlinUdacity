@@ -292,3 +292,57 @@ import com.example.android.trackmysleepquality.convertNumericQualityToString
 49-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 49+    class ViewHolder private constructor (itemView: View) : RecyclerView.ViewHolder(itemView){
 ```
+
+-- 07 Refresh Data with DiffUtil
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepNightAdapter.kt
+
+```kt
+82-91+
+
+/**
+ * Callback for calculating the diff between two non-null items in a list.
+ *
+ * Used by ListAdapter to calculate the minumum number of changes between and old list and a new
+ * list that's been passed to `submitList`.
+ */
+class SleepNightDiffCallback : DiffUtil.ItemCallback<SleepNight>() {
+}
+24+import androidx.recyclerview.widget.DiffUtil
+91-97+
+    override fun areItemsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+        return oldItem.nightId == newItem.nightId
+    }
+
+    override fun areContentsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+        return oldItem == newItem
+    }
+31-class SleepNightAdapter : RecyclerView.Adapter<SleepNightAdapter.ViewHolder>() {
+31-32+
+class SleepNightAdapter : ListAdapter<SleepNight,
+        SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
+25+import androidx.recyclerview.widget.ListAdapter
+37-40-
+    var data = listOf<SleepNight>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    override fun getItemCount() = data.size
+36-        val item = data[position]
+36+        val item = getItem(position)
+```
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+105-                adapter.data = it
+105+                adapter.submitList(it)
+68-        sleepTrackerViewModel.showSnackBarEvent.observe(this, Observer {
+68+        sleepTrackerViewModel.showSnackBarEvent.observe(viewLifecycleOwner, Observer {
+71-                        activity!!.findViewById(android.R.id.content),
+71+                        requireActivity().findViewById(android.R.id.content),
+82-        sleepTrackerViewModel.navigateToSleepQuality.observe(this, Observer { night ->
+82+        sleepTrackerViewModel.navigateToSleepQuality.observe(viewLifecycleOwner, Observer { night ->
+```
