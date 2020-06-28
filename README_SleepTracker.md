@@ -532,3 +532,253 @@ import android.text.Spanned
 import androidx.core.text.HtmlCompat
 import com.example.android.trackmysleepquality.database.SleepNight
 ```
+
+-- 06 Recording Sleep Quality
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerViewModel.kt
+
+```kt
+63-85+
+    /**
+     * Variable that tells the Fragment to navigate to a specific [SleepQualityFragment]
+     *
+     * This is private because we don't want to expose setting this value to the Fragment.
+     */
+    private val _navigateToSleepQuality = MutableLiveData<SleepNight>()
+
+    /**
+     * If this is non-null, immediately navigate to [SleepQualityFragment] and call [doneNavigating]
+     */
+    val navigateToSleepQuality: LiveData<SleepNight>
+        get() = _navigateToSleepQuality
+
+    /**
+     * Call this immediately after navigating to [SleepQualityFragment]
+     *
+     * It will clear the navigation request, so if the user rotates their phone it won't navigate
+     * twice.
+     */
+    fun doneNavigating() {
+        _navigateToSleepQuality.value = null
+    }
+
+21+import androidx.lifecycle.LiveData
+162-164+
+
+            // Set state to navigate to the SleepQualityFragment.
+            _navigateToSleepQuality.value = oldNight
+```
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+63-81+
+        // Add an Observer on the state variable for Navigating when STOP button is pressed.
+        sleepTrackerViewModel.navigateToSleepQuality.observe(viewLifecycleOwner, Observer { night ->
+            night?.let {
+                // We need to get the navController from this, because button is not ready, and it
+                // just has to be a view. For some reason, this only matters if we hit stop again
+                // after using the back button, not if we hit stop and choose a quality.
+                // Also, in the Navigation Editor, for Quality -> Tracker, check "Inclusive" for
+                // popping the stack to get the correct behavior if we press stop multiple times
+                // followed by back.
+                // Also: https://stackoverflow.com/questions/28929637/difference-and-uses-of-oncreate-oncreateview-and-onactivitycreated-in-fra
+                this.findNavController().navigate(
+                        SleepTrackerFragmentDirections
+                                .actionSleepTrackerFragmentToSleepQualityFragment(night.nightId))
+                // Reset state to make sure we only navigate once, even if the device
+                // has a configuration change.
+                sleepTrackerViewModel.doneNavigating()
+            }
+        })
+
+25+import androidx.lifecycle.Observer
+27+import androidx.navigation.fragment.findNavController
+```
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleepquality/SleepQualityViewModel.kt
+
+```kt
+19-28+
+/**
+ * ViewModel for SleepQualityFragment.
+ *
+ * @param sleepNightKey The key of the current night we are working on.
+ */
+class SleepQualityViewModel(
+        private val sleepNightKey: Long = 0L,
+        val database: SleepDatabaseDao) : ViewModel() {
+}
+19-21+
+import androidx.lifecycle.ViewModel
+import com.example.android.trackmysleepquality.database.SleepDatabaseDao
+
+31-36+
+    /** Coroutine setup variables */
+
+    /**
+     * viewModelJob allows us to cancel all coroutines started by this ViewModel.
+     */
+    private val viewModelJob = Job()
+21+import kotlinx.coroutines.Job
+28-49+
+
+    /**
+     * A [CoroutineScope] keeps track of all coroutines started by this ViewModel.
+     *
+     * Because we pass it [viewModelJob], any coroutine started in this scope can be cancelled
+     * by calling `viewModelJob.cancel()`
+     *
+     * By default, all coroutines started in uiScope will launch in [Dispatchers.Main] which is
+     * the main thread on Android. This is a sensible default because most coroutines started by
+     * a [ViewModel] update the UI after performing some processing.
+     */
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+21-22+
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+52-61+
+
+    /**
+     * Cancels all coroutines when the ViewModel is cleared, to cleanup any pending work.
+     *
+     * onCleared() gets called when the ViewModel is destroyed.
+     */
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+53-60+
+    /**
+     * Variable that tells the fragment whether it should navigate to [SleepTrackerFragment].
+     *
+     * This is `private` because we don't want to expose the ability to set [MutableLiveData] to
+     * the [Fragment]
+     */
+    private val _navigateToSleepTracker = MutableLiveData<Boolean?>()
+
+19+import androidx.lifecycle.MutableLiveData
+62-67+
+    /**
+     * When true immediately navigate back to the [SleepTrackerFragment]
+     */
+    val navigateToSleepTracker: LiveData<Boolean?>
+        get() = _navigateToSleepTracker
+
+19+import androidx.lifecycle.LiveData
+78-84+
+
+    /**
+     * Call this immediately after navigating to [SleepTrackerFragment]
+     */
+    fun doneNavigating() {
+        _navigateToSleepTracker.value = null
+    }
+85-104+
+
+    /**
+     * Sets the sleep quality and updates the database.
+     *
+     * Then navigates back to the SleepTrackerFragment.
+     */
+    fun onSetSleepQuality(quality: Int) {
+        uiScope.launch {
+            // IO is a thread pool for running operations that access the disk, such as
+            // our Room database.
+            withContext(Dispatchers.IO) {
+                val tonight = database.get(sleepNightKey) ?: return@withContext
+                tonight.sleepQuality = quality
+                database.update(tonight)
+            }
+
+            // Setting this state variable to true will alert the observer and trigger navigation.
+            _navigateToSleepTracker.value = true
+        }
+    }
+23-25-
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+23+import kotlinx.coroutines.*
+```
+
+>- SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleepquality/SleepQualityViewModelFactory.kt
+
+```kt
+19-34+
+/**
+ * This is pretty much boiler plate code for a ViewModel Factory.
+ *
+ * Provides the key for the night and the SleepDatabaseDao to the ViewModel.
+ */
+class SleepQualityViewModelFactory(
+        private val sleepNightKey: Long,
+        private val dataSource: SleepDatabaseDao) : ViewModelProvider.Factory {
+    @Suppress("unchecked_cast")
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(SleepQualityViewModel::class.java)) {
+            return SleepQualityViewModel(sleepNightKey, dataSource) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
+19-22+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.android.trackmysleepquality.database.SleepDatabaseDao
+
+```
+
+> - SleepTracker/app/src/main/java/com/example/android/trackmysleepquality/sleepquality/SleepQualityFragment.kt
+
+```kt
+50-54+
+        val arguments = SleepQualityFragmentArgs.fromBundle(arguments!!)
+
+        // Create an instance of the ViewModel Factory.
+        val dataSource = SleepDatabase.getInstance(application).sleepDatabaseDao
+
+26+import com.example.android.trackmysleepquality.database.SleepDatabase
+55-60+
+        val viewModelFactory = SleepQualityViewModelFactory(arguments.sleepNightKey, dataSource)
+
+        // Get a reference to the ViewModel associated with this fragment.
+        val sleepQualityViewModel =
+                ViewModelProviders.of(
+                        this, viewModelFactory).get(SleepQualityViewModel::class.java)
+25+import androidx.lifecycle.ViewModelProviders
+63-77+
+        // To use the View Model with data binding, you have to explicitly
+        // give the binding object a reference to it.
+        binding.sleepQualityViewModel = sleepQualityViewModel
+
+        // Add an Observer to the state variable for Navigating when a Quality icon is tapped.
+        sleepQualityViewModel.navigateToSleepTracker.observe(this, Observer {
+            if (it == true) { // Observed state is true.
+                this.findNavController().navigate(
+                        SleepQualityFragmentDirections.actionSleepQualityFragmentToSleepTrackerFragment())
+                // Reset state to make sure we only navigate once, even if the device
+                // has a configuration change.
+                sleepQualityViewModel.doneNavigating()
+            }
+        })
+
+25+import androidx.lifecycle.Observer
+27+import androidx.navigation.fragment.findNavController
+```
+
+> - SleepTracker/app/src/main/res/layout/fragment_sleep_quality.xml
+
+```xml
+26-
+26-28+
+        <variable
+            name="sleepQualityViewModel"
+            type="com.example.android.trackmysleepquality.sleepquality.SleepQualityViewModel" />
+58+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(0)}"
+69+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(1)}"
+81+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(2)}"
+95+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(3)}"
+108+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(4)}"
+121+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(5)}"
+```
