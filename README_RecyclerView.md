@@ -538,3 +538,50 @@ import android.widget.TextView
             app:layout_constraintTop_toBottomOf="@+id/quality_image"
             app:sleepQualityString="@{sleep}" />
 ```
+
+-- 11 Implement a Click Listener
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepNightAdapter.kt
+
+```kt
+74-77+
+
+class SleepNightListener(val clickListener: (sleepId: Long) -> Unit) {
+    fun onClick(night: SleepNight) = clickListener(night.nightId)
+}
+```
+
+> - SleepTracker-with-RecyclerView/app/src/main/res/layout/list_item_sleep_night.xml
+
+```xml
+11-14+
+
+        <variable
+            name="clickListener"
+            type="com.example.android.trackmysleepquality.sleeptracker.SleepNightListener" />
+19+        android:onClick="@{() -> clickListener.onClick(sleep)}"
+```
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepNightAdapter.kt
+
+```kt
+27-class SleepNightAdapter : ListAdapter<SleepNight,
+27+class SleepNightAdapter(val clickListener: SleepNightListener) : ListAdapter<SleepNight,
+33-        holder.bind(item)
+33+        holder.bind(clickListener,item)
+//holder.bind(clickListener,getItem(position)!!)
+43-        fun bind(item: SleepNight) {
+43+        fun bind(clickListener: SleepNightListener, item: SleepNight) {
+45+            binding.clickListener = clickListener
+```
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+104-        val adapter = SleepNightAdapter()
+104-106+
+        val adapter = SleepNightAdapter(SleepNightListener { nightId ->
+            Toast.makeText(context, "${nightId}", Toast.LENGTH_LONG).show()
+        })
+23+import android.widget.Toast
+```
