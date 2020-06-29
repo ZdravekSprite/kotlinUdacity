@@ -795,3 +795,18 @@ import kotlinx.coroutines.withContext
 121-                adapter.submitList(it)
 121+                adapter.addHeaderAndSubmitList(it)
 ```
+
+-- 14 Add a Header to the GridLayout
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+114-120+
+        manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int) =  when (position) {
+                0 -> 3
+                else -> 1
+            }
+        }
+
+```
