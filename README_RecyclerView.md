@@ -682,3 +682,116 @@ class SleepNightListener(val clickListener: (sleepId: Long) -> Unit) {
         })
 
 ```
+
+-- 13 Add a List Header
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepNightAdapter.kt
+
+```kt
+79-90+
+
+sealed class DataItem {
+    data class SleepNightItem(val sleepNight: SleepNight): DataItem() {
+        override val id = sleepNight.nightId
+    }
+
+    object Header: DataItem() {
+        override val id = Long.MIN_VALUE
+    }
+
+    abstract val id: Long
+}
+40-49+
+    class TextViewHolder(view: View): RecyclerView.ViewHolder(view) {
+        companion object {
+            fun from(parent: ViewGroup): TextViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.header, parent, false)
+                return TextViewHolder(view)
+            }
+        }
+    }
+
+20+import android.view.View
+25+import com.example.android.trackmysleepquality.R
+29-30-
+class SleepNightAdapter(val clickListener: SleepNightListener) : ListAdapter<SleepNight,
+        SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()) {
+29-30+
+class SleepNightAdapter(val clickListener: SleepNightListener) : ListAdapter<DataItem,
+        RecyclerView.ViewHolder>(SleepNightDiffCallback()) {
+29-31+
+private val ITEM_VIEW_TYPE_HEADER = 0
+private val ITEM_VIEW_TYPE_ITEM = 1
+
+41-42-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
+41-46+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            ITEM_VIEW_TYPE_HEADER -> TextViewHolder.from(parent)
+            ITEM_VIEW_TYPE_ITEM -> ViewHolder.from(parent)
+            else -> throw ClassCastException("Unknown viewType ${viewType}")
+        }
+35-38-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+
+        holder.bind(clickListener,item)
+35-41+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is ViewHolder -> {
+                val nightItem = getItem(position) as DataItem.SleepNightItem
+                holder.bind(clickListener, nightItem.sleepNight)
+            }
+        }
+62-68+
+    override fun getItemViewType(position: Int): Int {
+        return when (getItem(position)) {
+            is DataItem.Header -> ITEM_VIEW_TYPE_HEADER
+            is DataItem.SleepNightItem -> ITEM_VIEW_TYPE_ITEM
+        }
+    }
+
+95-97-
+class SleepNightDiffCallback : DiffUtil.ItemCallback<SleepNight>() {
+    override fun areItemsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+        return oldItem.nightId == newItem.nightId
+95-97+
+class SleepNightDiffCallback : DiffUtil.ItemCallback<DataItem>() {
+    override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+        return oldItem.id == newItem.id
+100-    override fun areContentsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+100+    override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+35-36+
+    private val adapterScope = CoroutineScope(Dispatchers.Default)
+
+28-29+
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+39-50+
+    fun addHeaderAndSubmitList(list: List<SleepNight>?) {
+        adapterScope.launch {
+            val items = when (list) {
+                null -> listOf(DataItem.Header)
+                else -> listOf(DataItem.Header) + list.map { DataItem.SleepNightItem(it) }
+            }
+            withContext(Dispatchers.Main) {
+                submitList(items)
+            }
+        }
+    }
+
+30-31+
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+```
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+121-                adapter.submitList(it)
+121+                adapter.addHeaderAndSubmitList(it)
+```
