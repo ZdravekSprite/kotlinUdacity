@@ -484,3 +484,57 @@ import android.widget.TextView
 41+            app:sleepDurationFormatted="@{sleep}"
 53+            app:sleepQualityString="@{sleep}"
 ```
+
+-- 10 Change LinearLayout to GridLayout
+
+> - SleepTracker-with-RecyclerView/app/src/main/res/layout/fragment_sleep_tracker.xml
+
+```xml
+45-46-
+            app:layout_constraintTop_toBottomOf="@+id/stop_button"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+45+            app:layout_constraintTop_toBottomOf="@+id/stop_button" />
+```
+
+> - SleepTracker-with-RecyclerView/app/src/main/java/com/example/android/trackmysleepquality/sleeptracker/SleepTrackerFragment.kt
+
+```kt
+100-102+
+        val manager = GridLayoutManager(activity, 3)
+        binding.sleepList.layoutManager = manager
+
+28+import androidx.recyclerview.widget.GridLayoutManager
+```
+
+> - SleepTracker-with-RecyclerView/app/src/main/res/layout/list_item_sleep_night.xml
+
+```xml
+31-43-
+        <TextView
+            android:id="@+id/sleep_length"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/quality_image"
+            app:layout_constraintTop_toTopOf="@+id/quality_image"
+            app:sleepDurationFormatted="@{sleep}"
+            tools:text="Wednesday" />
+
+34-            android:layout_height="20dp"
+34+            android:layout_height="wrap_content"
+36-41-
+            app:layout_constraintEnd_toEndOf="@+id/sleep_length"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/sleep_length"
+            app:layout_constraintTop_toBottomOf="@+id/sleep_length"
+            app:sleepQualityString="@{sleep}"
+            tools:text="Excellent!!!" />
+36-39+
+            app:layout_constraintEnd_toEndOf="@+id/quality_image"
+            app:layout_constraintStart_toStartOf="@+id/quality_image"
+            app:layout_constraintTop_toBottomOf="@+id/quality_image"
+            app:sleepQualityString="@{sleep}" />
+```
